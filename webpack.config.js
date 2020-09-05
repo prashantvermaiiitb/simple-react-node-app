@@ -21,14 +21,14 @@ module.exports = {
        * This is the extra setting that has to be done for using the HTML templates.
        * @todo can we inject the SEO things after this ?
        */
-      // {
-      //   test: /\.html$/,
-      //   use: [
-      //     {
-      //       loader: "html-loader",
-      //     },
-      //   ],
-      // },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+          },
+        ],
+      },
     ],
   },
   /**
