@@ -51,4 +51,5 @@ Steps :-
       OR    
     > npm run build : for building the project in dist/ folder
 
+13. now we can also use the CSS in the code for that we need style-loader & css-loader to be installed. Those instructions are being updated in the webpack config and package JSON. this will help in loading CSS using JS in the <script> tag.
 

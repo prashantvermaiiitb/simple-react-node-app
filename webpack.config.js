@@ -29,6 +29,20 @@ module.exports = {
           },
         ],
       },
+      /**
+       * For pre-processing the CSS files i.e. loading them in RAM as the JS object and then parse them
+       */
+      {
+        test: /\.css$/i,
+        /* For injecting the CSS in the DOM from the generated JS bundle we need --> npm install --save-dev style-loader
+         * Without this code will not compile when the css file is being imported in the component JS file
+         * This will not WORK ALONE you have the use 'css-loader' as well
+         * so these will be evaluated from Right to Left 
+         * CSS loader will put the CSS imported in the JS 
+         * Style loader will pull the css and put that in the DOM as the script tag
+         */
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   /**
