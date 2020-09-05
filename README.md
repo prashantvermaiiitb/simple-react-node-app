@@ -48,6 +48,7 @@ Steps :-
 
 12. Now run :-
     > npm run start : for running the Dev server @ localhost:8080
+      OR    
     > npm run build : for building the project in dist/ folder
 
 
