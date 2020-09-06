@@ -37,30 +37,31 @@ Steps :-
 
    > npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
 
-6. Create the .babelrc file to support the configuration :- >{
+6. Create the .babelrc file to support the configuration :- 
+7. >{
    "presets": ["@babel/preset-env", "@babel/preset-react"]
    }
 
-7. Post this system is ready and able to create the build but we have to provide those commands in package JSON under "scripts" for this like for Module Building :-
+8. Post this system is ready and able to create the build but we have to provide those commands in package JSON under "scripts" for this like for Module Building :-
 
    > {"build": "webpack --mode production"}
 
-8. For the running webpack dev server
+9. For the running webpack dev server
 
    > {"dev": "webpack-dev-server --mode development --open "}
 
-9. by default webpack4.0 needs minimal settings and it's entry point will **./src/index.js** and output will be generated in **dist/name-of-the-file** here (default name is main.js for the bundle) 
+10. by default webpack4.0 needs minimal settings and it's entry point will **./src/index.js** and output will be generated in **dist/name-of-the-file** here (default name is main.js for the bundle) 
 
-10. Run the command "npm run build" You will see that **dist/** folder is being created with the relevant files but this is not being connected to any HTML. So let's install another set of plugin for using HTML as the templates.
+11. Run the command "npm run build" You will see that **dist/** folder is being created with the relevant files but this is not being connected to any HTML. So let's install another set of plugin for using HTML as the templates.
 
-11. loaders are being used in the Webpack to read the non-JS stuff and convert them or put them in the bundle. We will be using.
+12. loaders are being used in the Webpack to read the non-JS stuff and convert them or put them in the bundle. We will be using.
     1.  **html-loader** : for loading **.html** files as the templates
     2.  **html-webpack-plugin**: for copying the files in the dist folder
 
-12. Now run :-
+13. Now run :-
     > npm run start : for running the Dev server @ localhost:8080
       OR    
     > npm run build : for building the project in dist/ folder
 
-13. now we can also use the CSS in the code for that we need style-loader & css-loader to be installed. Those instructions are being updated in the webpack config and package JSON. this will help in loading CSS using JS in the <script> tag.
+14. now we can also use the CSS in the code for that we need style-loader & css-loader to be installed. Those instructions are being updated in the webpack config and package JSON. this will help in loading CSS using JS in the <script> tag.
 
