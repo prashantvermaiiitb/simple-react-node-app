@@ -1,6 +1,6 @@
 # simple-react-node-app
 
-Building simple React & React-Dom Node Modules to learn the below concepts :-
+Building simple React App using React/ React-Dom /Node Modules to learn the below concepts :-
 1. Setting up the REPO from the scratch.
 2. Creating Components for the project.
 3. Passing the props around and using state.
