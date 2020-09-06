@@ -1,6 +1,17 @@
 # simple-react-node-app
 
-Building simple React & React-Dom Node Modules.
+Building simple React & React-Dom Node Modules to learn the below concepts :-
+1. Setting up the REPO from the scratch.
+2. Creating Components for the project.
+3. Passing the props around and using state.
+4. Using children and React.children() API.
+5. Inline Css / External Css file usage and loading that using webpack loaders and plugins. 
+6. Life-Cycle hooks and methods.
+7. Functional components - create / use them.
+8. useState() & useEffect() - simple inclusion & usage.
+9. forceUpdate() to manual render the entire app.
+
+
 This repository will tell you to do the initial set-up for this.
 
 Steps :-

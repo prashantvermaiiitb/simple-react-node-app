@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import "./content.css";
 
 /**
@@ -8,6 +9,9 @@ import "./content.css";
  * (3) Using state for setting the value of the props
  * (4) Using react Children API to clone the react element and append the Props dynamically
  * (5) @todo Manual rendering of the component forceUpdate() ?
+ * (6) String refs are not usable in the function component
+ * (7) ReactDOM.findDomNode() API for accessing the DOM element.
+ * (8) Inline Style {} that you want to assign
  * @param {*} props
  */
 
@@ -34,6 +38,12 @@ export const Content = (props) => {
     console.log("UseEffect called for Content...");
     setClassName("content");
 
+    /**
+     * Using reactDom API to make changes in DOM
+     */
+    var myDiv = document.getElementById("myDiv");
+    ReactDOM.findDOMNode(myDiv).style.color = "green";
+
     return () => {
       // cleanup
     };
@@ -48,7 +58,14 @@ export const Content = (props) => {
       {React.Children.map(props.children, function (child) {
         return React.cloneElement(child, { className: className });
       })}
-      {/* <button onClick={forceUpdate}>Click me</button> */}
+      {/* <input type="text" ref="myInput"></input> */}
+      <div
+        id="myDiv"
+        style={{ padding: 10, backgroundColor: "lightblue", marginBottom: 10 }}
+      >
+        this will be updated on the component did mount / update using
+        findDOMNode() API.
+      </div>
     </React.Fragment>
   );
 };

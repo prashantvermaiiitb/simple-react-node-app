@@ -37,6 +37,15 @@ class Header extends React.Component {
     return state;
   }
   /**
+   * Step -2.1
+   * @param {*} nextProps
+   * @param {*} nextState
+   */
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log(`should component update..`);
+    return true;
+  }
+  /**
    * Step-3
    */
   render() {
@@ -47,6 +56,25 @@ class Header extends React.Component {
         <div>{this.props.sampleText2}</div>
       </div>
     );
+  }
+  /**
+   * Step- 3.1
+   * Something must be returned from here.
+   * @param {*} preProps
+   * @param {*} prevState
+   */
+  getSnapshotBeforeUpdate(preProps, prevState) {
+    console.log(`Snapshot before update`);
+    return null;
+  }
+  /**
+   * Step- 3.2
+   * @param {*} prevProps
+   * @param {*} prevState
+   * @param {*} Snapshot
+   */
+  componentDidUpdate(prevProps, prevState, Snapshot) {
+    console.log(`componentDidUpdate called`);
   }
 }
 /**
