@@ -56,7 +56,8 @@ Steps :-
 
 12. loaders are being used in the Webpack to read the non-JS stuff and convert them or put them in the bundle. We will be using.
     1.  **html-loader** : for loading **.html** files as the templates
-    2.  **html-webpack-plugin**: for copying the files in the dist folder
+    2.  **html-webpack-plugin**: for copying the files in the dist folder.
+      >npm install --save-dev html-loader html-webpack-plugin
 
 13. Now run :-
     > npm run start : for running the Dev server @ localhost:8080
