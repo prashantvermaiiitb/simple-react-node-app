@@ -3,7 +3,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { Content } from "./components/content/Content";
 import Person from "./components/content/Person.jsx";
-import LifeCycleHooks  from './components/content/LifeCycleHooks';
+import LifeCycleHooks from "./components/content/LifeCycleHooks";
 
 /**
  * CONCEPTS :-
@@ -21,13 +21,13 @@ class App extends Component {
     super(props);
     this.state = {
       random: Math.random(),
-      persons:[
-        {id:1,name:'john',age:37},
-        {id:2,name:'jacky',age:32},
-        {id:3,name:'jill',age:8},
-        {id:4,name:'james',age:5}
+      persons: [
+        { id: 1, name: "john", age: 37 },
+        { id: 2, name: "jacky", age: 32 },
+        { id: 3, name: "jill", age: 8 },
+        { id: 4, name: "james", age: 5 },
       ],
-      newNumber : 1
+      newNumber: 1,
     };
     this.setNewNumber = this.setNewNumber.bind(this);
   }
@@ -37,7 +37,9 @@ class App extends Component {
    */
   componentDidMount() {
     console.log(`Component Did Mount called for the APP component`);
-    this.setState({ random: `Old : ${this.state.random}, new : ${Math.random() }`});
+    this.setState({
+      random: `Old : ${this.state.random}, new : ${Math.random()}`,
+    });
   }
 
   /**
@@ -50,23 +52,23 @@ class App extends Component {
   }
 
   /**
-   * Shuffling the persons data 
+   * Shuffling the persons data
    */
-  shufflePerson(){
+  shufflePerson() {
     let persons = [...this.state.persons];
-    [persons[0],persons[3]]=[persons[3],persons[0]];
-    [persons[1],persons[2]]=[persons[2],persons[1]];
-    this.setState({persons});
+    [persons[0], persons[3]] = [persons[3], persons[0]];
+    [persons[1], persons[2]] = [persons[2], persons[1]];
+    this.setState({ persons });
   }
 
   /**
    * setting new number for showing the lifecycle hooks
-   * @todo since this is not called from within the arrow function 
+   * @todo since this is not called from within the arrow function
    * this method need to be bind in the "constructor"
    */
   setNewNumber() {
-    this.setState({newNumber: this.state.newNumber + 1});
- }
+    this.setState({ newNumber: this.state.newNumber + 1 });
+  }
 
   render() {
     /**
@@ -80,6 +82,9 @@ class App extends Component {
     };
     return (
       <div>
+        <span style={{ padding: 10, margin: 10, display: "flex" }}>
+          {"Current React version : " + React.version}
+        </span>
         <Header sampleText="This is the sample text passed as props from the APP." />
         <Content>
           <div>
@@ -88,19 +93,28 @@ class App extends Component {
             <span>Expression tester: {1 + 2}</span>
           </div>
         </Content>
-        {this.state.persons.map((person,index)=><Person key={index} data={person}/>)}
-        Random Number in State :<span style={spanStyle}>{this.state.random}</span>
+        <div>
+          <div style={{ textAlign: "center", backgroundColor: "#cacaca" }}>
+            Concept of the setState() here.
+          </div>
+          {this.state.persons.map((person, index) => (
+            <Person key={index} data={person} />
+          ))}
+          <button onClick={() => this.shufflePerson()}>Shuffle Persons</button>
+        </div>
+        <br />
+        <br />
+        Random Number in State :
+        <span style={spanStyle}>{this.state.random}</span>
         Random Number in Open :<span style={spanStyle}>{Math.random()}</span>
         <button onClick={() => this.forceUpdate()}>force-update</button>
-        <button onClick={() => this.shufflePerson()}>Shuffle Persons</button>
-        
-        <button onClick = {this.setNewNumber}>INCREMENT</button>
-        <LifeCycleHooks myNumber = {this.state.newNumber}></LifeCycleHooks>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+        <button onClick={this.setNewNumber}>INCREMENT</button>        
+        <LifeCycleHooks myNumber={this.state.newNumber}></LifeCycleHooks>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <Footer />
       </div>
     );
