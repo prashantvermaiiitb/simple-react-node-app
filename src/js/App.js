@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { Content } from "./components/content/Content";
 import Person from "./components/content/Person.jsx";
+import LifeCycleHooks  from './components/content/LifeCycleHooks';
 
 /**
  * CONCEPTS :-
@@ -12,7 +13,8 @@ import Person from "./components/content/Person.jsx";
  * (4) What are the expressions and how they can be used like {1+2}?
  * (5) Using forceUpdate() for the rendering process- componentDidUpdate() will be called.
  * (6) inline style objects to be used and how ?
- * (7) Auto-binding happens for the inline method and easy to use setState() then
+ * (7) Auto-binding happens for the inline method and easy to use setState() when used arrow function
+ * (8) manual binding to be done for the 'setNewNumber' method
  */
 class App extends Component {
   constructor(props) {
@@ -24,8 +26,10 @@ class App extends Component {
         {id:2,name:'jacky',age:32},
         {id:3,name:'jill',age:8},
         {id:4,name:'james',age:5}
-      ]
+      ],
+      newNumber : 1
     };
+    this.setNewNumber = this.setNewNumber.bind(this);
   }
 
   /**
@@ -55,6 +59,15 @@ class App extends Component {
     this.setState({persons});
   }
 
+  /**
+   * setting new number for showing the lifecycle hooks
+   * @todo since this is not called from within the arrow function 
+   * this method need to be bind in the "constructor"
+   */
+  setNewNumber() {
+    this.setState({newNumber: this.state.newNumber + 1});
+ }
+
   render() {
     /**
      * Css object created and will be used in React.
@@ -80,7 +93,14 @@ class App extends Component {
         Random Number in Open :<span style={spanStyle}>{Math.random()}</span>
         <button onClick={() => this.forceUpdate()}>force-update</button>
         <button onClick={() => this.shufflePerson()}>Shuffle Persons</button>
-        <Footer />
+        
+        <button onClick = {this.setNewNumber}>INCREMENT</button>
+        <LifeCycleHooks myNumber = {this.state.newNumber}></LifeCycleHooks>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
         <Footer />
       </div>
     );
