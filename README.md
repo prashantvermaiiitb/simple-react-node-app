@@ -31,7 +31,7 @@ Steps :-
 
 4. After this install the webpack and it's subsidiaries for module bundling and distributable creation.
 
-   > npm install webpack webpack-cli webpack-dev-server --save
+   > npm install webpack webpack-cli webpack-dev-server --save-dev
 
 5. Next we need the transpiler with us to transform JSX to JS and modern JS to ES understandable to browsers :-
 
@@ -48,7 +48,7 @@ Steps :-
 
 9. For the running webpack dev server
 
-   > {"dev": "webpack-dev-server --mode development --open "}
+   > {"dev": "webpack-dev-server --mode development --open --hot"}
 
 10. by default webpack4.0 needs minimal settings and it's entry point will **./src/index.js** and output will be generated in **dist/name-of-the-file** here (default name is main.js for the bundle) 
 
