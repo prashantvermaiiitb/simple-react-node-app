@@ -12,6 +12,7 @@ import Person from "./components/content/Person.jsx";
  * (4) What are the expressions and how they can be used like {1+2}?
  * (5) Using forceUpdate() for the rendering process- componentDidUpdate() will be called.
  * (6) inline style objects to be used and how ?
+ * (7) Auto-binding happens for the inline method and easy to use setState() then
  */
 class App extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class App extends Component {
    */
   componentDidMount() {
     console.log(`Component Did Mount called for the APP component`);
-    this.setState({ random: Math.random() });
+    this.setState({ random: `Old : ${this.state.random}, new : ${Math.random() }`});
   }
 
   /**
@@ -41,6 +42,17 @@ class App extends Component {
    */
   componentDidUpdate() {
     console.log(`Component Did Update called for the APP component`);
+    // this.setState({ random: Math.random() });
+  }
+
+  /**
+   * Shuffling the persons data 
+   */
+  shufflePerson(){
+    let persons = [...this.state.persons];
+    [persons[0],persons[3]]=[persons[3],persons[0]];
+    [persons[1],persons[2]]=[persons[2],persons[1]];
+    this.setState({persons});
   }
 
   render() {
@@ -63,9 +75,12 @@ class App extends Component {
             <span>Expression tester: {1 + 2}</span>
           </div>
         </Content>
-        {this.state.persons.map((person)=><Person data={person}/>)}
-        <span style={spanStyle}>{this.state.random}</span>
+        {this.state.persons.map((person,index)=><Person key={index} data={person}/>)}
+        Random Number in State :<span style={spanStyle}>{this.state.random}</span>
+        Random Number in Open :<span style={spanStyle}>{Math.random()}</span>
         <button onClick={() => this.forceUpdate()}>force-update</button>
+        <button onClick={() => this.shufflePerson()}>Shuffle Persons</button>
+        <Footer />
         <Footer />
       </div>
     );

@@ -81,12 +81,12 @@ class Header extends React.Component {
  * Defining Default props
  */
 Header.defaultProps = {
-  sampleText: `If the sample text is not present this will be the default Props.`,
+  sampleText: `If the sample text1 is not present this will be the default Props.`,
   /**
    * IF we comment the below line of code Error will come in the code because this props has been defined
    * as the required once.
    */
-  sampleText2: `If the sample text is not present this will be the default Props.`,
+  sampleText2: `If the sample text2 is not present this will be the default Props.`,
 };
 
 /**
