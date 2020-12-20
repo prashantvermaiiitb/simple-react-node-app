@@ -1,5 +1,6 @@
 /**
  * CONCEPT :- How to import the component and get that appended in the DOM element.
+ * this will be used in the build defined in the webpack.config.js
  */
 import React from "react";
 import ReactDOM from "react-dom";
