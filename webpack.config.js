@@ -39,7 +39,7 @@ module.exports = {
          * This will not WORK ALONE you have the use 'css-loader' as well
          * so these will be evaluated from Right to Left 
          * CSS loader will put the CSS imported in the JS 
-         * Style loader will pull the css and put that in the DOM as the script tag
+         * Style loader will pull the css and put that in the DOM as the style tag
          */
         use: ["style-loader", "css-loader"],
       },

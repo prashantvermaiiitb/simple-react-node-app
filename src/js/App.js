@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import { Content } from "./components/content/Content";
+import Person from "./components/content/Person.jsx";
 
 /**
  * CONCEPTS :-
@@ -17,6 +18,12 @@ class App extends Component {
     super(props);
     this.state = {
       random: Math.random(),
+      persons:[
+        {id:1,name:'john',age:37},
+        {id:2,name:'jacky',age:32},
+        {id:3,name:'jill',age:8},
+        {id:4,name:'james',age:5}
+      ]
     };
   }
 
@@ -51,11 +58,12 @@ class App extends Component {
         <Header sampleText="This is the sample text passed as props from the APP." />
         <Content>
           <div>
-            <span>Hello World</span>
+            <span data-myattribute="custom attribute">Hello World</span>
             <br />
             <span>Expression tester: {1 + 2}</span>
           </div>
         </Content>
+        {this.state.persons.map((person)=><Person data={person}/>)}
         <span style={spanStyle}>{this.state.random}</span>
         <button onClick={() => this.forceUpdate()}>force-update</button>
         <Footer />
