@@ -10,6 +10,8 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 7. Functional components - create / use them.
 8. useState() & useEffect() - simple inclusion & usage.
 9. forceUpdate() to manual render the entire app.
+10. LifeCycleHooks component to show all the life-cycle methods.
+11. UnMounting the entire React APP after a timeout.
 
 
 This repository will tell you to do the initial set-up for this.

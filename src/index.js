@@ -15,4 +15,4 @@ setTimeout(() => {
   alert("hi unmounting the app now!!");
   ReactDOM.unmountComponentAtNode(root);
   root.innerHTML = "WOW!!!!!!!!";
-}, 5000);
+}, 35000);
