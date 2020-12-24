@@ -11,8 +11,8 @@ ReactDOM.render(<App />, root);
 /**
  * This is the to demonstrate the usage of un-mounting the component.
  */
-setTimeout(() => {
-  alert("hi unmounting the app now!!");
-  ReactDOM.unmountComponentAtNode(root);
-  root.innerHTML = "WOW!!!!!!!!";
-}, 35000);
+// setTimeout(() => {
+//   alert("hi unmounting the app now!!");
+//   ReactDOM.unmountComponentAtNode(root);
+//   root.innerHTML = "WOW!!!!!!!!";
+// }, 35000);

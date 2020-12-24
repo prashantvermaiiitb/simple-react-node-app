@@ -4,6 +4,11 @@ import Footer from "./components/footer/Footer";
 import { Content } from "./components/content/Content";
 import Person from "./components/content/Person.jsx";
 import LifeCycleHooks from "./components/content/LifeCycleHooks";
+import PersonLoader from "./components/content/PersonLoader";
+import ErrorBoundary from "./components/content/ErrorBoundary";
+import Loader from "./components/content/WithLoader";
+import PersonInfoContainer from "./components/content/PersonInfo.jsx";
+import WithLoader from "./components/content/WithLoader";
 
 /**
  * CONCEPTS :-
@@ -46,7 +51,8 @@ class App extends Component {
    * Life-cycle method to be called after the component Did update
    * If we call setState() in here will recieve Error 'maximum render depth reached...'
    */
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    // console.log(prevProps, prevState);
     console.log(`Component Did Update called for the APP component`);
     // this.setState({ random: Math.random() });
   }
@@ -80,6 +86,12 @@ class App extends Component {
       marginBottom: 10,
       backgroundColor: "lightgrey",
     };
+
+    let PersonList = WithLoader(
+      PersonInfoContainer,
+      "please wait while details are being loaded..."
+    );
+
     return (
       <div>
         <span style={{ padding: 10, margin: 10, display: "flex" }}>
@@ -97,9 +109,16 @@ class App extends Component {
           <div style={{ textAlign: "center", backgroundColor: "#cacaca" }}>
             Concept of the setState() here.
           </div>
-          {this.state.persons.map((person, index) => (
-            <Person key={index} data={person} />
-          ))}
+          {/* <ErrorBoundary> */}
+            <PersonList />
+            {/* <PersonInfoContainer/> */}
+          {/* </ErrorBoundary> */}
+          <br/>
+          <br/>
+          <br/>
+          {/* <ErrorBoundary>
+            <PersonLoader />
+          </ErrorBoundary> */}
           <button onClick={() => this.shufflePerson()}>Shuffle Persons</button>
         </div>
         <br />
@@ -108,7 +127,7 @@ class App extends Component {
         <span style={spanStyle}>{this.state.random}</span>
         Random Number in Open :<span style={spanStyle}>{Math.random()}</span>
         <button onClick={() => this.forceUpdate()}>force-update</button>
-        <button onClick={this.setNewNumber}>INCREMENT</button>        
+        <button onClick={this.setNewNumber}>INCREMENT</button>
         <LifeCycleHooks myNumber={this.state.newNumber}></LifeCycleHooks>
         <br />
         <br />
