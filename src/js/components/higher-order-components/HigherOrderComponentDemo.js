@@ -1,6 +1,8 @@
 import React from "react";
 import WithBorder from "./WithBorder";
 import Sample from "./Sample";
+import WithLoader from "./WithLoader";
+import PersonInfoContainer from "../content/PersonInfoContainer";
 /**
  * class for showing the sample possible implementations for the
  * various HOC available.
@@ -35,9 +37,25 @@ const HOCDemo = () => {
 
   //this will work but with @todo warning
   //react-dom.development.js:88 Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.
-//   let EnhanceTest2 = WithBorder(() => test1);
+  //   let EnhanceTest2 = WithBorder(() => test1);
 
+  //Approach : 1
+  /**
+   * Here we are passing the reference of the Component to the HOC HOC will just
+   * wrap this in a function(props) and return that. PersonInfoContainer : is
+   * not going to change, this will be class component PersonList is a function
+   * returned from the WithLoader and it will return the instance of the
+   * WrappedComponent.
+   */
+  let PersonList = WithLoader(
+    PersonInfoContainer,
+    "please wait while details are being loaded..."
+  );
 
+  let a = PersonList(); //instantiating new Object
+  let b = PersonList(); //instantiating new Object
+
+  let PersonList2 = WithLoader(PersonInfoContainer, "Please wait...", 2);
 
   return (
     <>
@@ -55,6 +73,13 @@ const HOCDemo = () => {
       <br />
       <br />
       {/* <EnhanceTest2 /> */}
+
+      {PersonList()}
+      {a === b ? "both Person objects are same" : "objects are different"}
+      <br />
+      <br />
+      <PersonList2 />
+      {/* {PersonList()} */}
       <hr />
       <h1>HOC DEMO End</h1>
     </>
