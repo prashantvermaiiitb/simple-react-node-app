@@ -5,13 +5,17 @@ import React from "react";
  */
 const WithBorder = (WrappedComponent, componentStyle) => {
   let defaultStyle = componentStyle || { border: "1px solid red" };
+  let containerStyle = {
+    backgroundColor: "#cacaca",
+    textAlign: "center",
+    textTransform: "uppercase",
+    fontFamily: "monospace",
+  };
   return function (props) {
     return (
       <>
         <div style={defaultStyle}>
-          <span style={{ backgroundColor: "#cacaca" }}>
-            Hoc has wrapped this in Border...
-          </span>
+          <div style={containerStyle}>WithBorder() Hoc has wrapped it...</div>
           <WrappedComponent {...props} />
         </div>
       </>

@@ -52,8 +52,24 @@ class Header extends React.Component {
     console.log(`Rendering the component`);
     return (
       <div className="header">
+        <h1
+          style={{
+            textAlign: "center",
+            margin: "5px 0px",
+            textDecoration: "underline",
+          }}>
+          Header
+        </h1>
         <div>{this.state.sampleText}</div>
-        <div>{this.props.sampleText2}</div>
+        <br />
+        <div
+          style={{
+            border: "1px dotted #cacaca",
+            fontSize: 10,
+            fontWeight: "bold",
+          }}>
+          {this.props.sampleText2}
+        </div>
       </div>
     );
   }
@@ -86,7 +102,7 @@ Header.defaultProps = {
    * IF we comment the below line of code Error will come in the code because this props has been defined
    * as the required once.
    */
-  sampleText2: `If the sample text2 is not present this will be the default Props.`,
+  sampleText2: `Mandatory Sample Text2 with Default Value, if not passed.`,
 };
 
 /**

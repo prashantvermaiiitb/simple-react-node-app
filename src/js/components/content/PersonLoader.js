@@ -3,6 +3,9 @@ import Person from "./Person.jsx";
 /**
  * High order component for showing the Loading of the Data
  * from the Ajax calls.
+ * PersonLoader
+ *   - Image
+ *   - Person
  */
 class PersonLoader extends Component {
   /**
@@ -21,12 +24,30 @@ class PersonLoader extends Component {
    */
   componentDidMount() {
     if (this.state.loading) {
-      fetch("https://reqres.in/api/users")
-        .then((response) => response.json())
-        .then((data) => {
-          // console.log(data);
-          this.setState({ loading: !this.state.loading, persons: data.data });
-        });
+      /**
+       * Approach-1:
+       */
+      // let that = this;
+      // setTimeout(function () {
+      //   fetch("https://reqres.in/api/users")
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       // console.log(data);
+      //       that.setState({ loading: !that.state.loading, persons: data.data });
+      //     });
+      // }, 3000);
+      /**
+       * Approach -2 with Arrow function
+       * this will have the proper 'this' reference
+       */
+      setTimeout(() => {
+        fetch("https://reqres.in/api/users")
+          .then((response) => response.json())
+          .then((data) => {
+            // console.log(data);
+            this.setState({ loading: !this.state.loading, persons: data.data });
+          });
+      }, 3000);
     }
   }
 
@@ -55,8 +76,6 @@ class PersonLoader extends Component {
         {this.state.persons.map((person, index) => (
           <Person key={index} data={person} />
         ))}
-        <button>previous</button>
-        <button>next</button>
       </div>
     );
   }

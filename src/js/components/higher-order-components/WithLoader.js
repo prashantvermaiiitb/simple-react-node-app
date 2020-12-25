@@ -1,21 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 
-const WithLoader = (WrappedComponent, message, approach) => {
-  /**
-   * You are returning a function
-   * This will be creating instance of the WrappedComponent
-   * Instantiation is happening here in the function call by use of the Triangular brackets
-   * so this will be only simple function call
-   */
-  if (!approach || approach === 1) return (props) => <WrappedComponent />; // instantiation is  {PersonList()}
-
-  /**
-   * Here we are returning the class reference or function reference as is
-   * so the caller has to do the instantiation using </> brackets, while calling this in the Main Component.
-   */
-  if (approach === 2) {
-    return WrappedComponent; //component function is getting returned => <PersonList/>
-  }
+const WithLoader = (WrappedComponent, loadingMessage) => {
+  return class extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { isLoading: true };
+      this.handleLoading = this.handleLoading.bind(this);
+    }
+    /**
+     * Auto-binding will not work here
+     * @param {*} loadingStatus
+     */
+    handleLoading(loadingStatus) {
+      this.setState({ isLoading: loadingStatus });
+    }
+    componentDidMount() {
+      console.log(`WithLoader .. Component is mounted in Dom.`);
+    }
+    componentWillUnmount() {
+      console.log(`WithLoader .. component is being unmounted now`);
+    }
+    render() {
+      return (
+        <>
+          {this.state.isLoading && <h1>{loadingMessage}</h1>}
+          {/* Returning the instance of the WrappedComponent */}
+          <WrappedComponent {...this.props} onLoading={this.handleLoading} />
+        </>
+      );
+    }
+  };
 };
 
 export default WithLoader;

@@ -5,7 +5,9 @@ const API = {
   BASE: "https://reqres.in/api/users",
   PAGE: "?page=",
 };
-
+/**
+ * Person information loader from the network.
+ */
 class PersonInfoContainer extends Component {
   /**
    * constructor
@@ -38,8 +40,16 @@ class PersonInfoContainer extends Component {
    */
   componentDidMount() {
     console.log(`personinfo component did mount called...`);
-    // this.props.onLoading(true);
-    this.makeRequest(API.BASE);
+
+    let { onLoading } = this.props;
+    if (typeof onLoading === "function") {
+      this.props.onLoading(false);
+    }
+    this.makeRequest(API.BASE, function () {
+      // if (typeof onLoading === "function") {
+      //   this.props.onLoading(false);
+      // }
+    });
   }
 
   // componentDidUpdate(prevProps, prevState, snapShot) {}

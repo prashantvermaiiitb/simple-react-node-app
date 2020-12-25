@@ -4,11 +4,8 @@ import Footer from "./components/footer/Footer";
 import Content from "./components/content/Content";
 import Person from "./components/content/Person.jsx";
 import LifeCycleHooks from "./components/content/LifeCycleHooks";
-import PersonLoader from "./components/content/PersonLoader";
-import ErrorBoundary from "./components/content/ErrorBoundary";
-import Loader from "./components/content/WithLoader";
+import Loader from "./components/higher-order-components/WithLoader";
 // import WithLoader from "./components/content/WithLoader";
-import WithLoader from "./components/higher-order-components/WithLoader";
 import WithBorder from "./components/higher-order-components/WithBorder";
 import Sample from "./components/higher-order-components/Sample";
 import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo";
@@ -29,12 +26,6 @@ class App extends Component {
     super(props);
     this.state = {
       random: Math.random(),
-      persons: [
-        { id: 1, name: "john", age: 37 },
-        { id: 2, name: "jacky", age: 32 },
-        { id: 3, name: "jill", age: 8 },
-        { id: 4, name: "james", age: 5 },
-      ],
       newNumber: 1,
     };
     this.setNewNumber = this.setNewNumber.bind(this);
@@ -61,16 +52,6 @@ class App extends Component {
   }
 
   /**
-   * Shuffling the persons data
-   */
-  shufflePerson() {
-    let persons = [...this.state.persons];
-    [persons[0], persons[3]] = [persons[3], persons[0]];
-    [persons[1], persons[2]] = [persons[2], persons[1]];
-    this.setState({ persons });
-  }
-
-  /**
    * setting new number for showing the lifecycle hooks
    * @todo since this is not called from within the arrow function
    * this method need to be bind in the "constructor"
@@ -90,55 +71,51 @@ class App extends Component {
       backgroundColor: "lightgrey",
     };
 
-    
-    let WrappedContent = WithBorder(
-      (props) => (
-        <Content>
-          <div {...props}>
-            <span data-myattribute="custom attribute">Hello World</span>
-            <br />
-            <span>Expression tester: {1 + 2}</span>
-          </div>
-        </Content>
-      ),
-      { border: "3px solid black", marginBottom: 10 }
-    );
-
     return (
       <div>
-        <span style={{ padding: 10, margin: 10, display: "flex" }}>
-          {"Current React version : " + React.version}
+        <Header sampleText="Sample text passed as props from the APP." />
+        <span
+          style={{
+            padding: 10,
+            margin: 10,
+            display: "flex",
+            border: "1px solid #cacaca",
+          }}>
+          {"E.g. Expression eval: Current React version : " + React.version}
         </span>
-        <Header sampleText="This is the sample text passed as props from the APP." />
         <div>
-          <div style={{ textAlign: "center", backgroundColor: "#cacaca" }}>
-            Concept of the setState() here.
+          <div style={{ backgroundColor: "#cacaca" }}>
+            <div
+              style={{
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: 14,
+                padding: "5px 0",
+                textDecoration: "underline",
+              }}>
+              E.g. ForceUpdate() / Concept of the setState() here.
+            </div>
+            <br />
+
+            <span style={spanStyle}>
+              Current Random Number(s) in State : {this.state.random}
+            </span>
+            <span style={spanStyle}>Random Number: {Math.random()}</span>
+            <button onClick={() => this.forceUpdate()}>force-update</button>
+            <button onClick={this.setNewNumber}>INCREMENT</button>
           </div>
-          {/* <ErrorBoundary> */}
-
-
-          {/* <PersonList /> */}
-
-        
-          {/* <PersonInfoContainer /> */}
-          {/* </ErrorBoundary> */}
-          <br />
-          <br />
-          <br />
-          {/* <ErrorBoundary>
-            <PersonLoader />
-          </ErrorBoundary> */}
-          <button onClick={() => this.shufflePerson()}>Shuffle Persons</button>
         </div>
-        <WrappedContent data-msg="hi" />
+
         <HOCDemo />
+
+        {/* <ErrorBoundary> */}
+        {/* <PersonInfoContainer /> */}
+        {/* </ErrorBoundary> */}
         <br />
         <br />
-        Random Number in State :
-        <span style={spanStyle}>{this.state.random}</span>
-        Random Number in Open :<span style={spanStyle}>{Math.random()}</span>
-        <button onClick={() => this.forceUpdate()}>force-update</button>
-        <button onClick={this.setNewNumber}>INCREMENT</button>
+        
+        <br />
+        <br />
         <LifeCycleHooks myNumber={this.state.newNumber}></LifeCycleHooks>
         <br />
         <br />
