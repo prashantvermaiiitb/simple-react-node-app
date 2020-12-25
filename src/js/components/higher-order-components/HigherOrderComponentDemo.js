@@ -81,10 +81,17 @@ const HOCDemo = () => {
   // console.log(new FetchPersonApproach2()); // by this Object will be created but Not REACT one
   // console.log(<FetchPersonApproach2 />); // by this React Object will be created.
 
-  let PersonList3 = WithLoader(
-    PersonInfoContainer,
-    "Please wait till data loads..."
-  );
+  /**
+   * Approach3 for HOC using the class component for loading the Person Information.
+   * This will be just returning a wrapper for the passed in wrappedComponent
+   */
+  let FetchPersonApproach3 = WithSimpleLoader(PersonInfoContainer, 3);
+  // console.log(<FetchPersonApproach3 />);
+
+  // let PersonList3 = WithLoader(
+  //   PersonInfoContainer,
+  //   "Please wait till data loads..."
+  // );
   // let c = new PersonList3(); // this is just a function call for creating the new Object
   // let d = <PersonList3 />; //this is a react element being created as we have returned the Class
   // console.log(c);
@@ -111,9 +118,9 @@ const HOCDemo = () => {
       <EnhancedSample />
       {test1("Just calling the function...")}
       <EnhancedTest1 msg="Forming React Component.." />
-      <div style={{ padding: 5 }}>
+      {/* <div style={{ padding: 5 }}>
         Error Use-case for HOC calling : <EnhanceTest2 />
-      </div>
+      </div> */}
       {FetchPersonListApproach1("...Fetch PersonList HOC Approach1...")}
       <div>
         <br />
@@ -123,11 +130,15 @@ const HOCDemo = () => {
       <div>
         <br />
         <div style={divStyle}>...Fetch PersonList HOC Approach3...</div>
+        <FetchPersonApproach3 />
+      </div>
+      <div>
+        <br />
+        <div style={divStyle}>...Fetch PersonList HOC Approach4...</div>
         <ErrorBoundary>
           <PersonLoader />
         </ErrorBoundary>
       </div>
-
       <br />
       {/* {new PersonList3().render()} */}
       {/* <PersonList3 />; */}

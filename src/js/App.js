@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import Content from "./components/content/Content";
-import Person from "./components/content/Person.jsx";
 import LifeCycleHooks from "./components/content/LifeCycleHooks";
-import Loader from "./components/higher-order-components/WithLoader";
-// import WithLoader from "./components/content/WithLoader";
-import WithBorder from "./components/higher-order-components/WithBorder";
-import Sample from "./components/higher-order-components/Sample";
 import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo";
 
 /**
@@ -103,23 +97,10 @@ class App extends Component {
             <span style={spanStyle}>Random Number: {Math.random()}</span>
             <button onClick={() => this.forceUpdate()}>force-update</button>
             <button onClick={this.setNewNumber}>INCREMENT</button>
+            <LifeCycleHooks myNumber={this.state.newNumber}></LifeCycleHooks>
           </div>
         </div>
-
         <HOCDemo />
-
-        {/* <ErrorBoundary> */}
-        {/* <PersonInfoContainer /> */}
-        {/* </ErrorBoundary> */}
-        <br />
-        <br />
-        
-        <br />
-        <br />
-        <LifeCycleHooks myNumber={this.state.newNumber}></LifeCycleHooks>
-        <br />
-        <br />
-        <br />
         <br />
         <br />
         <Footer />

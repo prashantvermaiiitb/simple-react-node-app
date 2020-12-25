@@ -34,6 +34,33 @@ const WithSimpleLoader = (WrappedComponent, approach) => {
   if (approach === 2) {
     return WrappedComponent; //component function is getting returned => <PersonList/>
   }
+
+  /**
+   * returning class object based on the wrapped component
+   * react_devtools_backend.js:2430 Warning: Can't perform a React state update on an unmounted
+   * component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel
+   * all subscriptions and asynchronous tasks in the componentWillUnmount method.
+   */
+  if (approach === 3) {
+    return class extends React.Component {
+      constructor(props) {
+        super(props);
+        this.handleLoad = this.handleLoad.bind(this);
+        this.state = { loading: true };
+      }
+      handleLoad(loading) {
+        this.setState({ loading: loading });
+      }
+      render() {
+        return (
+          <>
+            {this.state.loading && <h3>please wait as the data loads</h3>}
+            <WrappedComponent onLoading={this.handleLoad} />
+          </>
+        );
+      }
+    };
+  }
   return null;
 };
 

@@ -16,6 +16,7 @@ class PersonInfoContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this._ismounted = false;
     this.handleNextAction = this.handleNextAction.bind(this);
     this.handlePreviousAction = this.handlePreviousAction.bind(this);
   }
@@ -28,9 +29,16 @@ class PersonInfoContainer extends Component {
     return fetch(url)
       .then((response) => response.json())
       .then(({ page: cp, per_page: pp, total_pages: tp, data: persons }) => {
-        this.setState({ cp, pp, tp, persons });
-        if (callback) {
-          callback();
+        console.log("Is component Mounted in makeRequest...", this._ismounted);
+        //https://github.com/material-components/material-components-web-react/issues/434
+        if (this._ismounted) {
+          //have put this based on above
+          this.setState({ cp, pp, tp, persons });
+          // console.log(callback);
+          if (callback) {
+            // console.log("calling the callback");
+            callback();
+          }
         }
       });
   }
@@ -39,22 +47,24 @@ class PersonInfoContainer extends Component {
    * once the component is mounted in the dom
    */
   componentDidMount() {
-    console.log(`personinfo component did mount called...`);
-
-    let { onLoading } = this.props;
-    if (typeof onLoading === "function") {
-      this.props.onLoading(false);
-    }
-    this.makeRequest(API.BASE, function () {
-      // if (typeof onLoading === "function") {
-      //   this.props.onLoading(false);
-      // }
-    });
+    this._ismounted = true;
+    console.log(`personinfo component did mount called...`, this._ismounted);
+    let that = this;
+    setTimeout(() => {
+      this.makeRequest(API.BASE, function () {
+        // console.log(typeof that.props.onLoading);
+        if (typeof that.props.onLoading === "function") {
+          // console.log(that.props);
+          that.props.onLoading(false);
+        }
+      });
+    }, 3000);
   }
 
   // componentDidUpdate(prevProps, prevState, snapShot) {}
 
   componentWillUnmount() {
+    this._ismounted = false;
     console.log(`Personinfo has been un-mounted`);
   }
 
