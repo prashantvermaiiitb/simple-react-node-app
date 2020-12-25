@@ -7,8 +7,9 @@ import LifeCycleHooks from "./components/content/LifeCycleHooks";
 import PersonLoader from "./components/content/PersonLoader";
 import ErrorBoundary from "./components/content/ErrorBoundary";
 import Loader from "./components/content/WithLoader";
-import PersonInfoContainer from "./components/content/PersonInfo.jsx";
-import WithLoader from "./components/content/WithLoader";
+import PersonInfoContainer from "./components/content/PersonInfo.js";
+// import WithLoader from "./components/content/WithLoader";
+import WithLoader from "./components/higher-order-components/WithLoader";
 import WithBorder from "./components/higher-order-components/WithBorder";
 import Sample from "./components/higher-order-components/Sample";
 import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo";
@@ -119,8 +120,15 @@ class App extends Component {
             Concept of the setState() here.
           </div>
           {/* <ErrorBoundary> */}
-          <PersonList />
-          {/* <PersonInfoContainer/> */}
+
+          
+          {/* <PersonList /> */}
+
+          {PersonList()} 
+          
+          {PersonList()} 
+        
+          {/* <PersonInfoContainer /> */}
           {/* </ErrorBoundary> */}
           <br />
           <br />

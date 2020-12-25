@@ -33,9 +33,11 @@ const HOCDemo = () => {
   //needed to be wrapped in function
   //   let EnhanceTest2 = WithBorder(test1);
 
-  //this will work but with warning
+  //this will work but with @todo warning
   //react-dom.development.js:88 Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it.
-  let EnhanceTest2 = WithBorder(() => test1);
+//   let EnhanceTest2 = WithBorder(() => test1);
+
+
 
   return (
     <>
@@ -52,7 +54,7 @@ const HOCDemo = () => {
       <EnhancedTest1 msg="making call to React Component..." />
       <br />
       <br />
-      <EnhanceTest2 />
+      {/* <EnhanceTest2 /> */}
       <hr />
       <h1>HOC DEMO End</h1>
     </>

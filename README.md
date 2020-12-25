@@ -22,7 +22,8 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 19. PropsTypes having Default Props & Prop-validations
 20. Stateless components, Uncontrolled Components
 21. React Children API
-22. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
+22. React memoization for caching the response or the component
+23. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
 
 
 This repository will tell you to do the initial set-up for this.
