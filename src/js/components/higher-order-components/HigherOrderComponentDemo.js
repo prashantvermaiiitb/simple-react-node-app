@@ -3,7 +3,7 @@ import WithBorder from "./WithBorder";
 import Sample from "./Sample";
 import WithSimpleLoader from "./WithSimpleLoader";
 import PersonInfoContainer from "../content/PersonInfoContainer";
-import WithLoader from "./WithLoader";
+// import WithLoader from "./WithLoader";
 import Content from "../content/Content";
 import PersonLoader from "../content/PersonLoader";
 import ErrorBoundary from "../content/ErrorBoundary";
