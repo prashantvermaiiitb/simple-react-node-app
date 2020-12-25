@@ -14,8 +14,11 @@ const WithLoader = (WrappedComponent, loadingMessage) => {
     handleLoading(loadingStatus) {
       this.setState({ isLoading: loadingStatus });
     }
+    componentDidMount() {
+      console.log(`WithLoader .. Component is mounted in Dom.`);
+    }
     componentWillUnmount() {
-      console.log(`WithLoader component is being unmounted now`);
+      console.log(`WithLoader .. component is being unmounted now`);
     }
     render() {
       return (

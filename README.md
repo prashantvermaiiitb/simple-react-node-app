@@ -11,7 +11,18 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 8. useState() & useEffect() - simple inclusion & usage.
 9. forceUpdate() to manual render the entire app.
 10. LifeCycleHooks component to show all the life-cycle methods.
-11. UnMounting the entire React APP after a timeout.
+11. Error Boundary to be used for the Component
+12. Higher Order component for showing the Loader for a XHR-request
+13. Mixins Vs HOC
+14. Creating and using Refs
+15. Portals 
+16. Hooks
+17. Render Props
+18. Relay
+19. PropsTypes having Default Props & Prop-validations
+20. Stateless components, Uncontrolled Components
+21. React Children API
+22. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
 
 
 This repository will tell you to do the initial set-up for this.

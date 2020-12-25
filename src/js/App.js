@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
-import { Content } from "./components/content/Content";
+import Content from "./components/content/Content";
 import Person from "./components/content/Person.jsx";
 import LifeCycleHooks from "./components/content/LifeCycleHooks";
 import PersonLoader from "./components/content/PersonLoader";
@@ -9,6 +9,9 @@ import ErrorBoundary from "./components/content/ErrorBoundary";
 import Loader from "./components/content/WithLoader";
 import PersonInfoContainer from "./components/content/PersonInfo.jsx";
 import WithLoader from "./components/content/WithLoader";
+import WithBorder from "./components/higher-order-components/WithBorder";
+import Sample from "./components/higher-order-components/Sample";
+import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo";
 
 /**
  * CONCEPTS :-
@@ -92,35 +95,43 @@ class App extends Component {
       "please wait while details are being loaded..."
     );
 
+    let WrappedContent = WithBorder(
+      (props) => (
+        <Content>
+          <div {...props}>
+            <span data-myattribute="custom attribute">Hello World</span>
+            <br />
+            <span>Expression tester: {1 + 2}</span>
+          </div>
+        </Content>
+      ),
+      { border: "3px solid black", marginBottom: 10 }
+    );
+
     return (
       <div>
         <span style={{ padding: 10, margin: 10, display: "flex" }}>
           {"Current React version : " + React.version}
         </span>
         <Header sampleText="This is the sample text passed as props from the APP." />
-        <Content>
-          <div>
-            <span data-myattribute="custom attribute">Hello World</span>
-            <br />
-            <span>Expression tester: {1 + 2}</span>
-          </div>
-        </Content>
         <div>
           <div style={{ textAlign: "center", backgroundColor: "#cacaca" }}>
             Concept of the setState() here.
           </div>
           {/* <ErrorBoundary> */}
-            <PersonList />
-            {/* <PersonInfoContainer/> */}
+          <PersonList />
+          {/* <PersonInfoContainer/> */}
           {/* </ErrorBoundary> */}
-          <br/>
-          <br/>
-          <br/>
+          <br />
+          <br />
+          <br />
           {/* <ErrorBoundary>
             <PersonLoader />
           </ErrorBoundary> */}
           <button onClick={() => this.shufflePerson()}>Shuffle Persons</button>
         </div>
+        <WrappedContent data-msg="hi" />
+        <HOCDemo />
         <br />
         <br />
         Random Number in State :

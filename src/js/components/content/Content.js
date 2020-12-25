@@ -21,7 +21,7 @@ import "./content.css";
 //   return () => setValue((value) => ++value); // update the state to force render
 // }
 
-export const Content = (props) => {
+const Content = (props) => {
   /**
    * Example of using the state in the functional component.
    * Here we are trying to use the Hooks
@@ -61,11 +61,12 @@ export const Content = (props) => {
       {/* <input type="text" ref="myInput"></input> */}
       <div
         id="myDiv"
-        style={{ padding: 10, backgroundColor: "lightblue", marginBottom: 10 }}
-      >
+        style={{ padding: 10, backgroundColor: "lightblue", marginBottom: 10 }}>
         this will be updated on the component did mount / update using
         findDOMNode() API.
       </div>
     </React.Fragment>
   );
 };
+
+export default Content;
