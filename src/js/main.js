@@ -3,17 +3,48 @@
  * this will be used in the build defined in the webpack.config.js
  */
 import React from "react";
-import ReactDOM from "react-dom";
 import App from "./App.js";
+import Home from "./components/content/Home";
+import About from "./components/content/About";
+import Contact from "./components/content/Contact";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 let root = document.getElementById("app");
 
-ReactDOM.render(<App />, root);
+export const Main = function (props) {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">App</Link>
+          </li>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+        </ul>
 
-/**
- * This is the to demonstrate the usage of un-mounting the component.
- */
-setTimeout(() => {
-  alert("hi unmounting the app now!!");
-  ReactDOM.unmountComponentAtNode(root);
-  root.innerHTML = "WOW!!!!!!!!";
-}, 35000);
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/contact">
+            <Contact />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="/">
+            <App />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+};

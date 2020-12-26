@@ -3,11 +3,15 @@
  */
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./js/App.js";
-
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import App from "./js/App.js";
+// import Home from "./js/components/content/Home";
+// import About from "./js/components/content/About";
+// import Contact from "./js/components/content/Contact";
+import { Main } from "./js/main";
 let root = document.getElementById("app");
 
-ReactDOM.render(<App />, root);
+ReactDOM.render(<Main />, root);
 /**
  * This is the to demonstrate the usage of un-mounting the component.
  */

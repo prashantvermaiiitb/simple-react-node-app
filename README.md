@@ -30,6 +30,7 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 23. React Loadables
 24. React Events
 25. React Router
+    1.  install react-router-dom :
 26. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
 
 
@@ -86,4 +87,8 @@ Steps :-
     > npm run build : for building the project in dist/ folder
 
 14. now we can also use the CSS in the code for that we need style-loader & css-loader to be installed. Those instructions are being updated in the webpack config and package JSON. this will help in loading CSS using JS in the <script> tag.
+
+15. Installing react-router dom using below command :-
+    > npm install --save-dev react-router-dom
+16. 
 
