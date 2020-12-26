@@ -14,7 +14,11 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 11. Error Boundary to be used for the Component
 12. Higher Order component for showing the Loader for a XHR-request
 13. Mixins Vs HOC
-14. Creating and using Refs
+14. Creating and using Refs : RefDemo
+    1. String Ref < 16
+    2. React.CreateRef()
+    3. React.forwardRef()
+    4. Callback Ref()
 15. Portals 
 16. Hooks
 17. Render Props
@@ -25,7 +29,8 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 22. React memoization for caching the response or the component
 23. React Loadables
 24. React Events
-25. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
+25. React Router
+26. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
 
 
 This repository will tell you to do the initial set-up for this.
