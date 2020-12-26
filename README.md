@@ -24,7 +24,8 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 21. React Children API
 22. React memoization for caching the response or the component
 23. React Loadables
-24. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
+24. React Events
+25. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
 
 
 This repository will tell you to do the initial set-up for this.

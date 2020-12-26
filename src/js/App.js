@@ -3,6 +3,8 @@ import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import LifeCycleHooks from "./components/content/LifeCycleHooks";
 import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo";
+import Form from "./components/content/Form.jsx";
+import RefDemo from './components/content/RefDemo';
 
 /**
  * CONCEPTS :-
@@ -77,6 +79,8 @@ class App extends Component {
           }}>
           {"E.g. Expression eval: Current React version : " + React.version}
         </span>
+        <Form />
+        <RefDemo />
         <div>
           <div style={{ backgroundColor: "#cacaca" }}>
             <div
@@ -101,6 +105,8 @@ class App extends Component {
           </div>
         </div>
         <HOCDemo />
+        <br />
+        <br />
         <br />
         <br />
         <Footer />
