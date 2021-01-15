@@ -4,10 +4,7 @@
  */
 import React from "react";
 import App from "./App.js";
-import Home from "./components/content/Home";
-import About from "./components/content/About";
-import Contact from "./components/content/Contact";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navigation from "./components/navigation/Navigation.js";
 import PageNotFound from "./components/content/PageNotFound.js";
 import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo.js";
@@ -15,6 +12,7 @@ import Header from "./components/header/Header.js";
 import Footer from "./components/footer/Footer.js";
 import RefDemo from "./components/content/RefDemo.js";
 import PureVsImpureDemo from "./components/content/PureVsImpureComponent.js";
+import NestedComponents from "./components/nestedcomponents/index.js";
 
 /**
  * Main Component just returning Router 
@@ -27,18 +25,10 @@ export const Main = function (props) {
         <Navigation />
         <Header sampleText="Sample text passed as props from the APP." />
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/contact">
-            <Contact />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
           <Route path="/ref">
             <RefDemo />
           </Route>
+          <Route path="/nestedcomponent" component={NestedComponents} />
           <Route path="/hoc" component={HOCDemo} />
           <Route path="/pureVsImpure" component={PureVsImpureDemo} />
           <Route exact path="/">
