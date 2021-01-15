@@ -8,28 +8,24 @@ import Home from "./components/content/Home";
 import About from "./components/content/About";
 import Contact from "./components/content/Contact";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Navigation from "./components/navigation/Navigation.js";
+import PageNotFound from "./components/content/PageNotFound.js";
+import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo.js";
+import Header from "./components/header/Header.js";
+import Footer from "./components/footer/Footer.js";
+import RefDemo from "./components/content/RefDemo.js";
+import PureVsImpureDemo from "./components/content/PureVsImpureComponent.js";
 
-let root = document.getElementById("app");
-
+/**
+ * Main Component just returning Router 
+ * @param {*} props 
+ */
 export const Main = function (props) {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
-            <Link to="/">App</Link>
-          </li>
-          <li>
-            <Link to="/home">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-
+        <Navigation />
+        <Header sampleText="Sample text passed as props from the APP." />
         <Switch>
           <Route path="/about">
             <About />
@@ -40,10 +36,17 @@ export const Main = function (props) {
           <Route path="/home">
             <Home />
           </Route>
-          <Route path="/">
+          <Route path="/ref">
+            <RefDemo />
+          </Route>
+          <Route path="/hoc" component={HOCDemo} />
+          <Route path="/pureVsImpure" component={PureVsImpureDemo} />
+          <Route exact path="/">
             <App />
           </Route>
+          <Route path="*" component={PageNotFound} />
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

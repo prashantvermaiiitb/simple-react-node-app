@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
 import LifeCycleHooks from "./components/content/LifeCycleHooks";
-import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo";
 import Form from "./components/content/Form.jsx";
-import RefDemo from './components/content/RefDemo';
+import ImpureComponent from './components/content/ImpureComponent';
+import PureComponent from './components/content/PureComponent';
 
 /**
  * CONCEPTS :-
@@ -69,7 +67,6 @@ class App extends Component {
 
     return (
       <div>
-        <Header sampleText="Sample text passed as props from the APP." />
         <span
           style={{
             padding: 10,
@@ -82,7 +79,6 @@ class App extends Component {
         {/* {Form} */}
         {/* Warning: Functions are not valid as a React child. This may happen if you return a Component instead of <Component /> from render. Or maybe you meant to call this function rather than return it. */}
         <Form />
-        <RefDemo />
         <div>
           <div style={{ backgroundColor: "#cacaca" }}>
             <div
@@ -106,12 +102,6 @@ class App extends Component {
             <LifeCycleHooks myNumber={this.state.newNumber}></LifeCycleHooks>
           </div>
         </div>
-        <HOCDemo />
-        <br />
-        <br />
-        <br />
-        <br />
-        <Footer />
       </div>
     );
   }

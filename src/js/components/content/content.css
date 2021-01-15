@@ -1,10 +1,26 @@
 .content {
-    background-color: burlywood;
-    font-size: 15px;
-    font-family: "Arial, Helvetica, sans-serif";
-    padding: 10px;
-    margin: 10px 0;
+  background-color: burlywood;
+  font-size: 15px;
+  font-family: "Arial, Helvetica, sans-serif";
+  padding: 10px;
+  margin: 10px 0;
 }
-.active{
-    background-color: aquamarine;
+.active {
+  background-color: aquamarine;
+}
+.page-not-found {
+  border: 1px solid rgba(255, 94, 0, 0.842);
+  padding: 10px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.page-not-found span {
+  font-family: fantasy;
+  color: red;
+  font-size: 20px;
+}
+
+.page-not-found a {
+  font-size: 20px;
 }
