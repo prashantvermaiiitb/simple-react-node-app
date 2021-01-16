@@ -32,6 +32,11 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 25. React Pure Components
 26. React Router
     1.  install react-router-dom :
+    2.  Nested Routing
+    3.  IndexRoute, IndexLink, NavLink 
+    4.  activeClassName, activeStyle, onActionIndexOnly
+    5.  Named Components
+    6.  
 27. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
 
 
