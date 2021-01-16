@@ -35,9 +35,10 @@ const PureHoc = WithBorder(Wrapper(PureComponent, true), {
 /**
  * Component to show the Pure Vs Impure Implementation inside the react.
  */
-const PureVsImpureDemo = () => {
+const PureVsImpureDemo = ({ customProps }) => {
     return (
         <div>
+            {customProps && <span style={{ display: 'block', margin: 10, padding: 10 }}>"{customProps}" passed from the render method.</span>}
             <ImpureHoc />
             <PureHoc />
         </div>

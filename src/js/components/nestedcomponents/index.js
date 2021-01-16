@@ -21,6 +21,9 @@ const NestedComponents = () => {
                 <li>
                     <Link to="/contact">Contact</Link>
                 </li>
+                <li>
+                    <Link to="/namedcomponent">Named Component</Link>
+                </li>
             </div>
             <Route path="/about">
                 <About />

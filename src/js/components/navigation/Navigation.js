@@ -28,7 +28,9 @@ const Navigation = () => {
             <li>
                 <Link to="/relative">Relative Path Demo</Link>
             </li>
-
+            <li>
+                <Link to="/programaticrouting">Programtic Route Demo</Link>
+            </li>
         </ul>
     );
 }
