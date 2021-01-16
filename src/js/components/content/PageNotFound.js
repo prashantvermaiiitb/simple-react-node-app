@@ -9,7 +9,7 @@ const PageNotFound = () => {
         <div className="page-not-found">
             <span >Sorry Current Route is not supported !!</span>
             <br />
-            <span style={{ fontSize: 14 }}>(Probably implementation needed in Webpack config or SSR.)</span>
+            <span style={{ fontSize: 14 }}>(Probably implementation needed in Webpack config or SSR for server side link access.)</span>
             <br />
             <br />
             <br />
