@@ -6,7 +6,7 @@ import './router.css';
  */
 function Topics() {
     let match = useRouteMatch();
-    console.log(match);
+    console.log('inside Topics component..', match);
     return (
         <div>
             <h2>Topics</h2>
@@ -32,6 +32,7 @@ function Topics() {
             2nd <Route> here as an "index" page for all topics, or
             the page that is shown when no topic is selected */}
             <Switch>
+
                 <Route path={`${match.path}/redirect`} exact component={RedirectComponent} />
                 <Route path={`${match.path}/:topicId/:number`} component={TopicClass}>
                 </Route>
@@ -41,6 +42,9 @@ function Topics() {
                 <Route path={match.path}>
                     <h3>Please select a topic.</h3>
                 </Route>
+                <Route path={`${match.path}/new-link-to-be-processed`} render={() => {
+                    <h3>This is the error page..</h3>
+                }} />
             </Switch>
         </div>
     );
@@ -52,7 +56,7 @@ function TopicFunction(props) {
     console.log('blank props object...', props); // this not getting printed when being used with <Topic/> as inner child
     console.log('params object ... ', useParams());
     let { topicId } = useParams();//de-structuring happened here 
-    return <h3>Requested topic ID: {topicId}</h3>;
+    return <h3>Requested topic ID from class: {topicId}</h3>;
 }
 
 
@@ -67,11 +71,14 @@ function TopicFunction(props) {
 class TopicClass extends React.Component {
     render() {
         console.log('Props object from class ', this.props); // this not getting printed when being used with <Topic/> as inner child
-        return <h3>Requested topic ID: {this.props.match.params.topicId}</h3>;
+        return <h3>Requested topic ID from functional component: {this.props.match.params.topicId}</h3>;
     }
 }
 /**
  * redirect component testing.
+ * @todo have to check handling for this path how we can do this ?
+ * @todo Any time that you want to force navigation, 
+ * @todo you can render a <Redirect>. When a <Redirect> renders, it will navigate using its to prop.
  */
 const RedirectComponent = () => {
     return (

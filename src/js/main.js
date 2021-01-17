@@ -4,16 +4,31 @@
  */
 import React from "react";
 import App from "./App.js";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navigation from "./components/navigation/Navigation.js";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import PageNotFound from "./components/content/PageNotFound.js";
 import HOCDemo from "./components/higher-order-components/HigherOrderComponentDemo.js";
 import Header from "./components/header/Header.js";
 import Footer from "./components/footer/Footer.js";
 import RefDemo from "./components/content/RefDemo.js";
 import PureVsImpureDemo from "./components/content/PureVsImpureComponent.js";
-import NestedComponents from "./components/nestedcomponents/index.js";
-import ProgramaticRouting from "./components/content/ProgramaticRouter.js";
+import RouterExamples from './components/router-functionalities';
+import Navigation from './components/navigation/Navigation';
+
+import { generateNavLinksFromConfig, generateRoutesFromConfig } from './utils/utils';
+import HooksDemo from "./components/hooks/HooksDemo.js";
+
+/**
+ * Configuration information for the main navigation.
+ * This will be iterated over to create the navigation.
+ */
+const mainNavigationConfig = [
+  { path: '/', name: 'App', component: App },
+  { path: '/hoc', name: 'High Order Component (HOC)', component: HOCDemo },
+  { path: '/ref', name: 'Ref. Usage', component: RefDemo },
+  { path: '/pure-vs-impure', name: 'Pure Vs Impure Component', render: (props) => { return <PureVsImpureDemo customProps="hi" />; } },
+  { path: '/hooks', name: 'Hooks' },
+  { path: '/router-examples', name: 'Router Usage Examples' },
+]
 
 /**
  * Main Component just returning Router 
@@ -24,18 +39,24 @@ export const Main = function (props) {
     <Router>
       <div>
         <Header sampleText="Sample text passed as props from the APP." />
-        <Navigation />
+        <Navigation config={mainNavigationConfig} />
         <Switch>
-          <Route path="/ref">
-            <RefDemo />
-          </Route>
-          <Route path="/nestedcomponent" component={NestedComponents} />
-          <Route path="/programaticrouting" component={ProgramaticRouting} />
-          <Route path="/hoc" component={HOCDemo} />
-          <Route path="/pureVsImpure" render={(props) => { return <PureVsImpureDemo customProps="hi" /> }} />
+          {/* @todo using the configuration and generating the routes is needed now. */}
           <Route exact path="/">
             <App />
           </Route>
+          <Route path="/ref">
+            <RefDemo />
+          </Route>
+          <Route path="/hoc" component={HOCDemo} />
+          <Route path="/hooks" component={HooksDemo}>
+            {/* <Route path='/hooks'>
+              <Redirect to="/hooks/users" />
+            </Route>
+            <Route path="/hooks/users" render={() => <h1>hello</h1>} /> */}
+          </Route>
+          <Route path="/pure-vs-impure" render={(props) => { return <PureVsImpureDemo customProps="hi" /> }} />
+          <Route path="/router-examples" component={RouterExamples} />
           <Route path="*" component={PageNotFound} />
         </Switch>
         <Footer />

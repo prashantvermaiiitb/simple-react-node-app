@@ -1,0 +1,23 @@
+.hooks-container {
+  text-transform: uppercase;
+  display: flex;
+  font-family: monospace;
+}
+
+.user-info-header {
+  width: calc(100% / 3);
+  background-color: #cacaca;
+  font-family: monospace;
+}
+
+.user-container {
+  display: flex;
+  font-family: monospace;
+  padding: 2px;
+  border-top: 1px solid #4CAF50;
+}
+
+.user-info {
+  width: calc(100% / 3);
+  font-family: monospace;
+}
