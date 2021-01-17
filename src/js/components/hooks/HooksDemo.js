@@ -8,7 +8,7 @@ import { sleep } from '../../utils/utils';
  */
 import regeneratorRuntime from "regenerator-runtime";
 import './hooks.css';
-import WithSimpleLoader from '../higher-order-components/WithSimpleLoader';
+// import WithSimpleLoader from '../higher-order-components/WithSimpleLoader';
 /**
  * This will an example implementation for the react Hooks.
  * useState - used
