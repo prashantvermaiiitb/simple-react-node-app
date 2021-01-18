@@ -134,7 +134,7 @@ const UserAlbums = () => {
 
     const fetchAlbums = async () => {
         const data = await makeRequest(API.DATA.USER_ALBUMS(userId)).then(response => response.json());
-        console.log(data);
+        // console.log(data);
         setAlbums(data);
     }
 
