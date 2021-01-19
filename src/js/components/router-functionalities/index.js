@@ -10,7 +10,10 @@ import WithBorder from '../../components/higher-order-components/WithBorder';
  */
 let pageConfig = [
     { path: '/nestedcomponent', name: 'Nested Components', component: NestedComponents },
-    { path: '/programaticrouting', name: 'Programetic Routing', component: ProgramaticRouter },
+    { path: '/programatic-routing', name: 'Programetic Routing', component: ProgramaticRouter },
+    { path: '/render-example', name: 'Programetic Routing', render: ProgramaticRouter },
+    { path: '/children-example', name: 'Programetic Routing', children: ProgramaticRouter },
+    { path: '/priority-example', name: 'component,render,children Priority', component: ProgramaticRouter },
     { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
     { path: '/custom-link', name: 'Custom Link', component: NestedComponents },
     { path: '/prevent-user-link', name: 'Prevent user transition', component: NestedComponents },
