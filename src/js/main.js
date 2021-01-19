@@ -35,13 +35,13 @@ const mainNavigationConfig = [
  * @param {*} props 
  */
 export const Main = function (props) {
+  /* @todo : using the configuration and generating the routes is needed now. */
   return (
     <Router>
       <div>
         <Header sampleText="Sample text passed as props from the APP." />
         <Navigation config={mainNavigationConfig} />
         <Switch>
-          {/* @todo using the configuration and generating the routes is needed now. */}
           <Route exact path="/">
             <App />
           </Route>

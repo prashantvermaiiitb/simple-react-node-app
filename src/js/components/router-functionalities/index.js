@@ -1,102 +1,70 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
+import NestedComponents from '../nestedcomponents';
+import ProgramaticRouter from '../programatic-routing/ProgramaticRouter';
+import { generateNavLinksFromConfig, generateRoutesFromConfig } from '../../utils/utils';
+import WithBorder from '../../components/higher-order-components/WithBorder';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
  */
-export default () => {
-    return (
-        <React.Fragment>
-            <ul>
-                <li>
-                    <Link to="/nestedcomponent">Nested Component</Link>
-                </li>
-                <li>
-                    <Link to="/programaticrouting">Programtic Route Demo</Link>
-                </li>
-                <li>
-                    <Link to="/useAuth">useAuth Demo</Link>
-                </li>
-                <li>
-                    <Link to="/custom-link">CustomLink</Link>
-                </li>
-                <li>
-                    <Link to="/prevent-user-link">Preventing user transition</Link>
-                </li>
-                <li>
-                    <Link to="/no-match">No match with redirect</Link>
-                </li>
-                <li>
-                    <Link to="/recursive-path">recursive / dynamic paths</Link>
-                </li>
-                <li>
-                    <Link to="/route-config">route-config usage</Link>
-                </li>
-                <li>
-                    <Link to="/route-config-2">route-config usage-2</Link>
-                </li>
-                <li>
-                    <Link to="/transitions">Transitions</Link>
-                </li>
-                <li>
-                    <Link to="/gallery">Gallery</Link>
-                </li>
-                <li>
-                    <Link to="/static-router">Static router</Link>
-                </li>
-                <li>
-                    <Link to="/query-params">Query Parameter</Link>
-                </li>
-                <li>
-                    <Link to="/static-context">Static context</Link>
-                </li>
-                <li>
-                    <Link to="/redirect-with-status">Redirect with status</Link>
-                </li>
-                <li>
-                    <Link to="/match-path">Match-Path Demo</Link>
-                </li>
-                <li>
-                    <Link to="/code-splitting">Code Splitting</Link>
-                </li>
-                <li>
-                    <Link to="/scroll-restoration">scroll restoration</Link>
-                </li>
-                <li>
-                    <Link to="/responsive-ui">responsive user-interfaces</Link>
-                </li>
-                <li>
-                    <Link to="/type-of-routers">Router Types</Link>
-                </li>
-                <li>
-                    <Link to="/type-of-links">NavLink Attribute Types</Link>
-                </li>
-                <li>
-                    <Link to="/prompt">User prompt</Link>
-                </li>
-                <li>
-                    <Link to="/switch-demo">Switch Usage</Link>
-                </li>
-                <li>
-                    <Link to="/path-match">generate and match path</Link>
-                </li>
-                <li>
-                    <Link to="/history-object">History Object</Link>
-                </li>
-                <li>
-                    <Link to="/match-object">Match Object</Link>
-                </li>
-                <li>
-                    <Link to="/location-object">Location Object</Link>
-                </li>
-                <li>
-                    <Link to="/with-router">With Router usage</Link>
-                </li>
-                <li>
-                    <Link to="/relative">Relative Path Demo</Link>
-                </li>
+let pageConfig = [
+    { path: '/nestedcomponent', name: 'Nested Components', component: NestedComponents },
+    { path: '/programaticrouting', name: 'Programetic Routing', component: ProgramaticRouter },
+    { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
+    { path: '/custom-link', name: 'Custom Link', component: NestedComponents },
+    { path: '/prevent-user-link', name: 'Prevent user transition', component: NestedComponents },
+    { path: '/no-match-redirect', name: 'Redirect With No-match', component: NestedComponents },
+    { path: '/recursive-path', name: 'Recursive paths', component: NestedComponents },
+    { path: '/route-config', name: 'Use JSON Route Config', component: NestedComponents },
+    { path: '/route-config-2', name: 'Use JSON Route Config', component: NestedComponents },
+    { path: '/transitions', name: 'Transitions', component: NestedComponents },
+    { path: '/gallery', name: 'Gallery', component: NestedComponents },
+    { path: '/static-router', name: 'Static Router', component: NestedComponents },
+    { path: '/query-params', name: 'Query parameters', component: NestedComponents },
+    { path: '/static-context', name: 'Context Passing', component: NestedComponents },
+    { path: "/redirect-with-status", name: "Redirect with status" },
+    { path: "/match-path", name: "Match-Path Demo" },
+    { path: "/code-splitting", name: "Code Splitting" },
+    { path: "/scroll-restoration", name: "scroll restoration" },
+    { path: "/responsive-ui", name: "responsive user-interfaces" },
+    { path: "/type-of-routers", name: "Router Types" },
+    { path: "/type-of-links", name: "NavLink Attribute Types" },
+    { path: "/prompt", name: "User prompt" },
+    { path: "/switch-demo", name: "Switch Usage" },
+    { path: "/path-match", name: "generate and match path" },
+    { path: "/history-object", name: "History Object" },
+    { path: "/match-object", name: "Match Object" },
+    { path: "/location-object", name: "Location Object" },
+    { path: "/with-router", name: "With Router usage" },
+    { path: "/relative", name: "Relative Path Demo" },
+    { path: "/passing-object", name: "Passing Object in 'to'" },
+    { path: "/passing-state-location", name: "Passing state in location" },
+    { path: "/custom-location-match", name: "Custom location match" },
+];
 
-            </ul>
-        </React.Fragment>
+
+/**
+ * Generating the Navigation Links for the Route Match.
+ */
+export default () => {
+    const { url: baseUrl } = useRouteMatch();
+
+    // console.log(baseUrl);
+    return (
+        <div style={{ display: 'flex' }}>
+            <div style={{ width: '35%' }}>
+                {generateNavLinksFromConfig({ config: pageConfig, baseUrl })}
+            </div>
+            <div style={{ border: '1px solid #cacaca', padding: 10, margin: 10, width: '65%' }}>
+                {/* <Route path={`${baseUrl}/nestedcomponent`}><NestedComponents /></Route> */}
+                {/* <Route path={`${baseUrl}/nestedcomponent`} component={NestedComponents}></Route> */}
+                {
+                    generateRoutesFromConfig({ config: pageConfig, baseUrl })
+                }
+                {/* <Route path={`${baseUrl}/nestedcomponent`} render={() => <NestedComponents />}></Route> */}
+            </div>
+
+        </div>
     );
 }

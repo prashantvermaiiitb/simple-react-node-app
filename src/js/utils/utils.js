@@ -3,20 +3,31 @@ import { Link, Route } from 'react-router-dom';
 import routerFunctionalities from '../components/router-functionalities';
 /**
  * Utility to generate the Navigation from the JSON config array.
- * @param {*} jsonConfigArray 
+ * @param {*} config 
+ * @param {*} listStyle 
+ * @param {*} baseUrl 
  */
-export const generateNavLinksFromConfig = (jsonConfigArray) => {
-    return jsonConfigArray.map((route, index) => <li key={index}><Link to={route.path}>{route.name}</Link></li>);
+export const generateNavLinksFromConfig = ({ config, listStyle, baseUrl = '' }) => {
+    return (
+        <ul style={listStyle || { listStyle: 'decimal' }}>
+            {config.map((route, index) => <li key={index}><Link to={`${baseUrl}${route.path}`}>{route.name}</Link></li>)}
+        </ul>
+    );
 }
 /**
  * Method to generate the Routes from the JSON config.
  * This can be same that has been used for generating the navigation for the page.
- * @param {*} jsonConfigArray 
+ * @param {*} config 
  */
-export const generateRoutesFromConfig = (jsonConfigArray) => {
-    console.log(jsonConfigArray.filter((route) => route.component || route.render || route.children).map((route, index) => <Route key={index} {...route}></Route>));
+export const generateRoutesFromConfig = ({ config, baseUrl }) => {
+    return config.map(function (route, index) {
+        if (route.component) {
+            // console.log(`${baseUrl}${route.path}`);
+            return <Route key={index} path={`${baseUrl}${route.path}`} component={route.component} />
 
-    return jsonConfigArray.filter((route) => route.component).map((route, index) => <Route key={index} component={route.component}></Route>);
+        }
+        return null;
+    });
 }
 
 export const sleep = function (ms) {
