@@ -27,6 +27,7 @@ const mainNavigationConfig = [
   { path: '/ref', name: 'Ref. Usage', component: RefDemo },
   { path: '/pure-vs-impure', name: 'Pure Vs Impure Component', render: (props) => { return <PureVsImpureDemo customProps="hi" />; } },
   { path: '/hooks', name: 'Hooks' },
+  { path: '/context', name: 'Context API' },
   { path: '/router-examples', name: 'Router Usage Examples' },
 ]
 

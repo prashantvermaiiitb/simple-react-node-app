@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import NestedComponents from '../nestedcomponents';
 import ProgramaticRouter from '../programatic-routing/ProgramaticRouter';
@@ -7,13 +7,104 @@ import WithBorder from '../../components/higher-order-components/WithBorder';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
+ * 
+ * From : https://reactrouter.com/core/api/Route/component
+ *
+ * Component:-
+ * ----------
+ * When you use component (instead of render or children, below) the router uses 
+ * React.createElement to create a new React element from the given component. 
+ * That means if you provide an inline function to the component prop, you would 
+ * create a new component every render. This results in the existing component unmounting 
+ * and the new component mounting instead of just updating the existing component. 
+ * When using an inline function for inline rendering, use the render or the children prop (below).
+ * 
+ * Render:-
+ * -------
+ * This allows for convenient inline rendering and wrapping without the undesired remounting explained above.
+ * Instead of having a new React element created for you using the component prop, you can pass in a function 
+ * to be called when the location matches. The render prop function has access to all the same route props 
+ * (match, location and history) as the component render prop.
+ *
+ * Warning: <Route component> takes precedence over <Route render> so don’t use both in the same <Route>.
+ * 
+ * Children:-
+ * --------
+ * Sometimes you need to render whether the path matches the location or not. 
+ * In these cases, you can use the function children prop. It works exactly like render except that 
+ * it gets called whether there is a match or not.The children render prop receives all the same route 
+ * props as the component and render methods, except when a route fails to match the URL, then match is null. 
+ * This allows you to dynamically adjust your UI based on whether or not the route matches. 
+ * Here we’re adding an active class if the route matches
+ * 
+ * Warning: 
+ * <Route children> takes precedence over both <Route component> and <Route render> so don’t use more than one in the same <Route>. 
+ * 
  */
+
 let pageConfig = [
     { path: '/nestedcomponent', name: 'Nested Components', component: NestedComponents },
-    { path: '/programatic-routing', name: 'Programetic Routing', component: ProgramaticRouter },
-    { path: '/render-example', name: 'Programetic Routing', render: ProgramaticRouter },
-    { path: '/children-example', name: 'Programetic Routing', children: ProgramaticRouter },
-    { path: '/priority-example', name: 'component,render,children Priority', component: ProgramaticRouter },
+
+    { path: '/programatic-routing', name: 'Programatic Routing', component: ProgramaticRouter },
+    {
+        path: '/programatic-routing-component-as-function',
+        name: 'Programatic Routing (Component as function)',
+        component: (props) => {
+            return <div>
+                <span style={{ fontSize: 15, fontWeight: 'bold', marginBottom: 10, display: 'block' }}>Component as function</span>
+                <br /><ProgramaticRouter {...props} /></div>
+        }
+    },
+
+    {
+        path: '/render-example',
+        name: 'Render Usage',
+        render: (props) => {
+            const Hello = function (props) {
+                useEffect(() => {
+                    console.log('hello Component (render usage Prop) mounted!!');
+                    return () => {
+                        //this will not be called because this is being mounted once and used again and again
+                        console.log('hello component (render usage prop) unmounted!!');
+                    }
+                }, []);
+                const HocWrapper = WithBorder(NestedComponents);
+                return <HocWrapper {...props} msg="calling from render prop" />
+            }
+            return <Hello {...props} />
+        }
+    },
+
+    {
+        path: '/children-example',
+        name: 'Children Usage',
+        children: (props) => {
+            const Hello = function (props) {
+                useEffect(() => {
+                    console.log('hello Component (children Prop) mounted!!');
+                    return () => {
+                        console.log('hello component (child prop) unmounted!!');
+                    }
+                }, [])
+                return <h3>hello from 'children', will be rendered in all the Routes, path information: {JSON.stringify(props.match)}.</h3>;
+            }
+            const HocWrapper = WithBorder(Hello);
+            return <HocWrapper {...props} msg="calling from children prop" />
+        }
+    },
+    {
+        path: '/priority-example',
+        name: 'component,render,children Priority',
+        children: (props) => {
+            return <h1>Children component priority-3</h1>
+        },
+        component: (props) => {
+            return <h1>Children component priority-1</h1>
+        },
+        render: (props) => {
+            return <h1>render props priority-2</h1>
+        }
+    },
     { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
     { path: '/custom-link', name: 'Custom Link', component: NestedComponents },
     { path: '/prevent-user-link', name: 'Prevent user transition', component: NestedComponents },

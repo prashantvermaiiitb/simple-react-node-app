@@ -9,7 +9,7 @@ import Topics from './Topics';
  * Nested component Demo for the page. 
  * @todo indexroute / indexlink - implementation ?
  */
-const NestedComponents = () => {
+const NestedComponents = (props) => {
     const match = useRouteMatch();
     const routes = [
         { name: 'Home', path: 'home', component: Home },
@@ -21,6 +21,7 @@ const NestedComponents = () => {
     ]
     return (
         <Router>
+            {props.msg && props.msg !== '' && <h1 style={{fontSize: 16, fontFamily: 'monospace', textDecoration: 'underline'}}>{props.msg}</h1>}
             <ul>
                 {routes.map((route, index) => {
                     return (

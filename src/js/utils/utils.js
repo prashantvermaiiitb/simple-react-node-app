@@ -25,6 +25,11 @@ export const generateRoutesFromConfig = ({ config, baseUrl }) => {
             // console.log(`${baseUrl}${route.path}`);
             return <Route key={index} path={`${baseUrl}${route.path}`} component={route.component} />
 
+        } else if (route.render && typeof route.render === 'function') {
+            return <Route key={index} path={`${baseUrl}${route.path}`} render={route.render} />
+        } else if (route.children && typeof route.children === 'function') {
+            return <Route key={index} path={`${baseUrl}${route.path}`} children={route.children} />
+
         }
         return null;
     });
