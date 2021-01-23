@@ -10,7 +10,7 @@ import routerFunctionalities from '../components/router-functionalities';
 export const generateNavLinksFromConfig = ({ config, listStyle, baseUrl = '' }) => {
     return (
         <ul style={listStyle || { listStyle: 'decimal' }}>
-            {config.map((route, index) => <li key={index}><Link to={`${baseUrl}${route.path}`}>{route.name}</Link></li>)}
+            {config.map((route, index) => <li style={{ margin: 5 }} key={index}><Link to={`${baseUrl}${route.path}`}>{route.name}</Link></li>)}
         </ul>
     );
 }
@@ -24,7 +24,6 @@ export const generateRoutesFromConfig = ({ config, baseUrl }) => {
         if (route.component) {
             // console.log(`${baseUrl}${route.path}`);
             return <Route key={index} path={`${baseUrl}${route.path}`} component={route.component} />
-
         } else if (route.render && typeof route.render === 'function') {
             return <Route key={index} path={`${baseUrl}${route.path}`} render={route.render} />
         } else if (route.children && typeof route.children === 'function') {

@@ -3,7 +3,11 @@ import { useRouteMatch } from 'react-router-dom';
 import NestedComponents from '../nestedcomponents';
 import ProgramaticRouter from '../programatic-routing/ProgramaticRouter';
 import { generateNavLinksFromConfig, generateRoutesFromConfig } from '../../utils/utils';
+import CustomLinkExample from '../content/CustomLink';
+import PromptUsage from '../content/PromptUsage';
 import WithBorder from '../../components/higher-order-components/WithBorder';
+import NoMatchExample from '../content/NoMatchExample';
+import RecursivePathMatch from '../content/RecursivePathMatch';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
@@ -48,7 +52,7 @@ let pageConfig = [
     { path: '/programatic-routing', name: 'Programatic Routing', component: ProgramaticRouter },
     {
         path: '/programatic-routing-component-as-function',
-        name: 'Programatic Routing (Component as function)',
+        name: 'Programatic Routing (Comp. as func.)',
         component: (props) => {
             return <div>
                 <span style={{ fontSize: 15, fontWeight: 'bold', marginBottom: 10, display: 'block' }}>Component as function</span>
@@ -74,6 +78,25 @@ let pageConfig = [
             return <Hello {...props} />
         }
     },
+    {
+        path: '/priority-example',
+        name: 'component,render,children Priority',
+        //@todo try commenting them one by one and see
+        children: (props) => {
+            return <h1>Children component priority-3</h1>
+        },
+        component: (props) => {
+            return <h1>Children component priority-1</h1>
+        },
+        render: (props) => {
+            return <h1>render props priority-2</h1>
+        }
+    },
+    { path: '/custom-link', name: 'Custom Link', component: CustomLinkExample },
+    { path: '/prompt-usage', name: 'Prevent user transition (Prompt)', component: PromptUsage },
+    { path: '/no-match-redirect', name: 'Redirect With No-match', component: NoMatchExample },
+    { path: '/recursive-path', name: 'Recursive paths', component: RecursivePathMatch },
+
 
     {
         path: '/children-example',
@@ -92,25 +115,8 @@ let pageConfig = [
             return <HocWrapper {...props} msg="calling from children prop" />
         }
     },
-    {
-        path: '/priority-example',
-        name: 'component,render,children Priority',
-        //@todo try commenting them one by one and see
-        children: (props) => {
-            return <h1>Children component priority-3</h1>
-        },
-        component: (props) => {
-            return <h1>Children component priority-1</h1>
-        },
-        render: (props) => {
-            return <h1>render props priority-2</h1>
-        }
-    },
-    { path: '/custom-link', name: 'Custom Link', component: NestedComponents },
+
     { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
-    { path: '/prevent-user-link', name: 'Prevent user transition', component: NestedComponents },
-    { path: '/no-match-redirect', name: 'Redirect With No-match', component: NestedComponents },
-    { path: '/recursive-path', name: 'Recursive paths', component: NestedComponents },
     { path: '/route-config', name: 'Use JSON Route Config', component: NestedComponents },
     { path: '/route-config-2', name: 'Use JSON Route Config', component: NestedComponents },
     { path: '/transitions', name: 'Transitions', component: NestedComponents },
