@@ -23,6 +23,7 @@ import PromptDemo from '../content/PromptDemo';
 import GeneratePathDemo from '../content/GeneratePathDemo';
 import ShowTheLocation from '../content/ShowTheLocation';
 import SwitchDemo from '../content/SwitchDemo';
+import ToObjectExample from '../content/ToObjectExample';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
@@ -124,6 +125,7 @@ let pageConfig = [
     { path: "/path-match", name: "generate and match path", component: GeneratePathDemo },
     { path: "/with-router", name: "With Router usage", component: ShowTheLocation },
     { path: "/switch-demo", name: "Switch Usage", component: SwitchDemo },
+    { path: "/passing-object", name: "Passing Object in 'to'", component: ToObjectExample },
 
 
 
@@ -150,16 +152,14 @@ let pageConfig = [
     { path: '/static-context', name: 'Context Passing', component: NestedComponents },
     { path: "/code-splitting", name: "Code Splitting", component: CodeSplitExample },
     { path: "/prompt", name: "User prompt", component: PromptDemo },
-
     { path: "/responsive-ui", name: "responsive user-interfaces" },
     // { path: "/type-of-routers", name: "Router Types" },
     // { path: "/history-object", name: "History Object" },
     // { path: "/match-object", name: "Match Object" },
     // { path: "/location-object", name: "Location Object" },
     // { path: "/relative", name: "Relative Path Demo" },
-    { path: "/passing-object", name: "Passing Object in 'to'" },
     // { path: "/passing-state-location", name: "Passing state in location" },
-    { path: "/custom-location-match", name: "Custom location match" },
+    // { path: "/custom-location-match", name: "Custom location match" },
 ];
 
 
