@@ -43,7 +43,7 @@ import WithBorder from '../../components/higher-order-components/WithBorder';
  */
 
 let pageConfig = [
-    { path: '/nestedcomponent', name: 'Nested Components', component: NestedComponents },
+    { path: '/nestedcomponent', name: 'Nested Components', component: WithBorder(NestedComponents, null, 'Sample Nested Component Example.') },
 
     { path: '/programatic-routing', name: 'Programatic Routing', component: ProgramaticRouter },
     {
@@ -86,7 +86,7 @@ let pageConfig = [
                         console.log('hello component (child prop) unmounted!!');
                     }
                 }, [])
-                return <h3>hello from 'children', will be rendered in all the Routes, path information: {JSON.stringify(props.match)}.</h3>;
+                return <h3 style={{ padding: '10px', fontFamily: 'monospace', fontSize: '14px' }}>hello from 'children',<br /> will be rendered in all the Routes. {props.match ? <span><br />{`path information will be present when there is a path match : ${JSON.stringify(props.match)}`}</span> : ''}</h3>;
             }
             const HocWrapper = WithBorder(Hello);
             return <HocWrapper {...props} msg="calling from children prop" />
@@ -95,6 +95,7 @@ let pageConfig = [
     {
         path: '/priority-example',
         name: 'component,render,children Priority',
+        //@todo try commenting them one by one and see
         children: (props) => {
             return <h1>Children component priority-3</h1>
         },
@@ -105,8 +106,8 @@ let pageConfig = [
             return <h1>render props priority-2</h1>
         }
     },
-    { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
     { path: '/custom-link', name: 'Custom Link', component: NestedComponents },
+    { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
     { path: '/prevent-user-link', name: 'Prevent user transition', component: NestedComponents },
     { path: '/no-match-redirect', name: 'Redirect With No-match', component: NestedComponents },
     { path: '/recursive-path', name: 'Recursive paths', component: NestedComponents },

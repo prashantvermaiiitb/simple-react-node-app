@@ -41,6 +41,7 @@ const RouteButton = () => (
 const ContextButton = (props, context) => (<button
     type='button'
     onClick={() => {
+        //console.log(context);
         // context.history.push === history.push
         context.history.push('/new-location')
     }}

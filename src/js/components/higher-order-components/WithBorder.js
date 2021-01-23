@@ -3,7 +3,7 @@ import React from "react";
  * Simple HOC for wrapping the component with Borders
  * @param {*} WrappedComponent
  */
-const WithBorder = (WrappedComponent, componentStyle) => {
+const WithBorder = (WrappedComponent, componentStyle, msg = 'WithBorder() Hoc has wrapped it...') => {
   let defaultStyle = componentStyle || { border: "1px solid red" };
   let containerStyle = {
     backgroundColor: "#cacaca",
@@ -15,7 +15,7 @@ const WithBorder = (WrappedComponent, componentStyle) => {
     return (
       <>
         <div style={defaultStyle}>
-          <div style={containerStyle}>WithBorder() Hoc has wrapped it...</div>
+          <div style={containerStyle}>{msg}</div>
           <WrappedComponent {...props} />
         </div>
       </>
