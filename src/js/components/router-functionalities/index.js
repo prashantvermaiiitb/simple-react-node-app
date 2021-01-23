@@ -9,6 +9,10 @@ import WithBorder from '../../components/higher-order-components/WithBorder';
 import NoMatchExample from '../content/NoMatchExample';
 import RecursivePathMatch from '../content/RecursivePathMatch';
 import SidebarExample from '../content/SideBar';
+import AnimationExample from '../content/AnimationExample';
+import RouteConfigExample from '../content/RouterConfigExample';
+import ModalGalleryExample from '../content/ModalGalleryExample';
+import QueryParamsExample from '../content/QueryParamsExample';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
@@ -98,6 +102,10 @@ let pageConfig = [
     { path: '/no-match-redirect', name: 'Redirect With No-match', component: NoMatchExample },
     { path: '/recursive-path', name: 'Recursive paths', component: RecursivePathMatch },
     { path: '/route-config', name: 'Display (2 Comp. / 1 Route)', component: SidebarExample },
+    { path: '/transitions', name: 'Transitions', component: AnimationExample },
+    { path: '/route-config-2', name: 'Use JSON Route Config', component: RouteConfigExample },
+    { path: '/gallery-demo', name: 'Gallery', component: ModalGalleryExample },
+    { path: '/query-params', name: 'Query parameters', component: QueryParamsExample },
 
 
     {
@@ -119,11 +127,7 @@ let pageConfig = [
     },
 
     { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
-    { path: '/route-config-2', name: 'Use JSON Route Config', component: NestedComponents },
-    { path: '/transitions', name: 'Transitions', component: NestedComponents },
-    { path: '/gallery', name: 'Gallery', component: NestedComponents },
     { path: '/static-router', name: 'Static Router', component: NestedComponents },
-    { path: '/query-params', name: 'Query parameters', component: NestedComponents },
     { path: '/static-context', name: 'Context Passing', component: NestedComponents },
     { path: "/redirect-with-status", name: "Redirect with status" },
     { path: "/match-path", name: "Match-Path Demo" },
