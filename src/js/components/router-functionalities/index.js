@@ -8,6 +8,7 @@ import PromptUsage from '../content/PromptUsage';
 import WithBorder from '../../components/higher-order-components/WithBorder';
 import NoMatchExample from '../content/NoMatchExample';
 import RecursivePathMatch from '../content/RecursivePathMatch';
+import SidebarExample from '../content/SideBar';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
@@ -96,6 +97,7 @@ let pageConfig = [
     { path: '/prompt-usage', name: 'Prevent user transition (Prompt)', component: PromptUsage },
     { path: '/no-match-redirect', name: 'Redirect With No-match', component: NoMatchExample },
     { path: '/recursive-path', name: 'Recursive paths', component: RecursivePathMatch },
+    { path: '/route-config', name: 'Display (2 Comp. / 1 Route)', component: SidebarExample },
 
 
     {
@@ -117,7 +119,6 @@ let pageConfig = [
     },
 
     { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
-    { path: '/route-config', name: 'Use JSON Route Config', component: NestedComponents },
     { path: '/route-config-2', name: 'Use JSON Route Config', component: NestedComponents },
     { path: '/transitions', name: 'Transitions', component: NestedComponents },
     { path: '/gallery', name: 'Gallery', component: NestedComponents },
