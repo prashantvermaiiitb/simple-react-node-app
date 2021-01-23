@@ -1,5 +1,7 @@
 /**
  * Example for showing the usage of the matchPath function
+ * This will be used outside react-router as well but here we are using Route at 
+ * the parent level so need those for the Demo purpose.
  */
 import React from 'react';
 import { Route, matchPath, useRouteMatch } from 'react-router-dom'

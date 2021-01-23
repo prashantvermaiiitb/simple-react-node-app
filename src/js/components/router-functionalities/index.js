@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import { useRouteMatch, NavLink } from 'react-router-dom';
 import NestedComponents from '../nestedcomponents';
 import ProgramaticRouter from '../programatic-routing/ProgramaticRouter';
 import { generateNavLinksFromConfig, generateRoutesFromConfig } from '../../utils/utils';
@@ -16,6 +16,13 @@ import QueryParamsExample from '../content/QueryParamsExample';
 import RedirectWithStatus from '../content/RedirectWithStatus';
 import MultiplePathDemo from '../content/MultiplePathDemo';
 import MatchPathExample from '../content/MatchPathExample';
+import ScrollToTopOnMount from '../content/ScrollToTop';
+import NavLinkDemo from '../content/NavLinkDemo';
+import CodeSplitExample from '../content/CodeSplitExample';
+import PromptDemo from '../content/PromptDemo';
+import GeneratePathDemo from '../content/GeneratePathDemo';
+import ShowTheLocation from '../content/ShowTheLocation';
+import SwitchDemo from '../content/SwitchDemo';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
@@ -101,7 +108,7 @@ let pageConfig = [
         }
     },
     { path: '/custom-link', name: 'Custom Link', component: CustomLinkExample },
-    { path: '/prompt-usage', name: 'Prevent user transition (Prompt)', component: PromptUsage },
+    { path: '/prompt-usage', name: 'Prevent user transition (Prompt Usage)', component: PromptUsage },
     { path: '/no-match-redirect', name: 'Redirect With No-match', component: NoMatchExample },
     { path: '/recursive-path', name: 'Recursive paths', component: RecursivePathMatch },
     { path: '/route-config', name: 'Display (2 Comp. / 1 Route)', component: SidebarExample },
@@ -112,6 +119,12 @@ let pageConfig = [
     { path: "/redirect-with-status", name: "Redirect with status", component: RedirectWithStatus },
     { path: "/multiple-path", name: "Multiple-Path 1 Component Demo", component: MultiplePathDemo },
     { path: "/match-path", name: "Match-Path Demo", component: MatchPathExample },
+    { path: "/scroll-restoration", name: "scroll restoration", component: ScrollToTopOnMount },
+    { path: "/nav-link-attributes", name: "NavLink Attribute Types", component: NavLinkDemo },
+    { path: "/path-match", name: "generate and match path", component: GeneratePathDemo },
+    { path: "/with-router", name: "With Router usage", component: ShowTheLocation },
+    { path: "/switch-demo", name: "Switch Usage", component: SwitchDemo },
+
 
 
     {
@@ -135,22 +148,17 @@ let pageConfig = [
     { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
     { path: '/static-router', name: 'Static Router', component: NestedComponents },
     { path: '/static-context', name: 'Context Passing', component: NestedComponents },
+    { path: "/code-splitting", name: "Code Splitting", component: CodeSplitExample },
+    { path: "/prompt", name: "User prompt", component: PromptDemo },
 
-    { path: "/code-splitting", name: "Code Splitting" },
-    { path: "/scroll-restoration", name: "scroll restoration" },
     { path: "/responsive-ui", name: "responsive user-interfaces" },
-    { path: "/type-of-routers", name: "Router Types" },
-    { path: "/type-of-links", name: "NavLink Attribute Types" },
-    { path: "/prompt", name: "User prompt" },
-    { path: "/switch-demo", name: "Switch Usage" },
-    { path: "/path-match", name: "generate and match path" },
-    { path: "/history-object", name: "History Object" },
-    { path: "/match-object", name: "Match Object" },
-    { path: "/location-object", name: "Location Object" },
-    { path: "/with-router", name: "With Router usage" },
-    { path: "/relative", name: "Relative Path Demo" },
+    // { path: "/type-of-routers", name: "Router Types" },
+    // { path: "/history-object", name: "History Object" },
+    // { path: "/match-object", name: "Match Object" },
+    // { path: "/location-object", name: "Location Object" },
+    // { path: "/relative", name: "Relative Path Demo" },
     { path: "/passing-object", name: "Passing Object in 'to'" },
-    { path: "/passing-state-location", name: "Passing state in location" },
+    // { path: "/passing-state-location", name: "Passing state in location" },
     { path: "/custom-location-match", name: "Custom location match" },
 ];
 
