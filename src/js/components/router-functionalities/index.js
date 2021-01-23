@@ -13,6 +13,9 @@ import AnimationExample from '../content/AnimationExample';
 import RouteConfigExample from '../content/RouterConfigExample';
 import ModalGalleryExample from '../content/ModalGalleryExample';
 import QueryParamsExample from '../content/QueryParamsExample';
+import RedirectWithStatus from '../content/RedirectWithStatus';
+import MultiplePathDemo from '../content/MultiplePathDemo';
+import MatchPathExample from '../content/MatchPathExample';
 /**
  * Navigation for setting up the context for the Router related 
  * functionalities.
@@ -106,6 +109,9 @@ let pageConfig = [
     { path: '/route-config-2', name: 'Use JSON Route Config', component: RouteConfigExample },
     { path: '/gallery-demo', name: 'Gallery', component: ModalGalleryExample },
     { path: '/query-params', name: 'Query parameters', component: QueryParamsExample },
+    { path: "/redirect-with-status", name: "Redirect with status", component: RedirectWithStatus },
+    { path: "/multiple-path", name: "Multiple-Path 1 Component Demo", component: MultiplePathDemo },
+    { path: "/match-path", name: "Match-Path Demo", component: MatchPathExample },
 
 
     {
@@ -129,8 +135,7 @@ let pageConfig = [
     { path: '/useAuth', name: 'UseAuth', component: NestedComponents },
     { path: '/static-router', name: 'Static Router', component: NestedComponents },
     { path: '/static-context', name: 'Context Passing', component: NestedComponents },
-    { path: "/redirect-with-status", name: "Redirect with status" },
-    { path: "/match-path", name: "Match-Path Demo" },
+
     { path: "/code-splitting", name: "Code Splitting" },
     { path: "/scroll-restoration", name: "scroll restoration" },
     { path: "/responsive-ui", name: "responsive user-interfaces" },
