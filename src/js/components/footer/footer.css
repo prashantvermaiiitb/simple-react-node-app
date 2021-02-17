@@ -1,8 +1,10 @@
 .footer {
-    bottom: 0px;
-    position: fixed;
-    background: lightgreen;
-    font-size: 16px;
-    padding: 10px;
-    font-family: monospace;
+  bottom: 0px;
+  position: fixed;
+  background: lightgreen;
+  font-size: 16px;
+  padding: 10px;
+  font-family: monospace;
+  width: 100%;
+  text-align: center;
 }

@@ -23,21 +23,31 @@ Building simple React App using React/ React-Dom /Node Modules to learn the belo
 16. Hooks
 17. Render Props
 18. Relay
-19. PropsTypes having Default Props & Prop-validations
-20. Stateless components, Uncontrolled Components
-21. React Children API
-22. React memoization for caching the response or the component
-23. React Loadables
-24. React Events
-25. React Pure Components
+19. React.lazy
+20. Loadable component Usage
+21. PropsTypes having Default Props & Prop-validations
+22. Stateless components, Uncontrolled Components
+23. React Children API
+24. React memoization for caching the response or the component
+25. React Events
+28. React Pure Components
 26. React Router
     1.  install react-router-dom :
     2.  Nested Routing
     3.  IndexRoute, IndexLink, NavLink 
     4.  activeClassName, activeStyle, onActionIndexOnly
     5.  Named Components
-    6.  
+    6.  Component, children and render prop usage
+    7.  History, location, match object usage
+    8.  useHistory, useRouteMatch, useParams, useLocation Hooks in action
+    9.  CSS Transitions 
+    10. Prompt Usage
+    11. Using Router config JSON for loading the information
+    12. matchPath & generatePath outside React-Router dom
+    13. Router, Route, Switch combinations and custom location match
+    14. Passing Objects in 'to' attribute in Link Tag
 27. UnMounting the entire React APP after a timeout by using ReactDom.unmountComponentAtNode
+28. Context API usage
 
 
 This repository will tell you to do the initial set-up for this.

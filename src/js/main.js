@@ -16,6 +16,8 @@ import Navigation from './components/navigation/Navigation';
 
 import { generateNavLinksFromConfig, generateRoutesFromConfig } from './utils/utils';
 import HooksDemo from "./components/hooks/HooksDemo.js";
+import CodeSplitExample from "./components/content/CodeSplitExample.js";
+import Demo from "./components/content/FunctionalComponent.js";
 
 /**
  * Configuration information for the main navigation.
@@ -23,12 +25,16 @@ import HooksDemo from "./components/hooks/HooksDemo.js";
  */
 const mainNavigationConfig = [
   { path: '/', name: 'App', component: App },
+  { path: '/demo', name: 'Functional Component', component: Demo },
   { path: '/hoc', name: 'High Order Component (HOC)', component: HOCDemo },
   { path: '/ref', name: 'Ref. Usage', component: RefDemo },
   { path: '/pure-vs-impure', name: 'Pure Vs Impure Component', render: (props) => { return <PureVsImpureDemo customProps="hi" />; } },
-  { path: '/hooks', name: 'Hooks' },
-  { path: '/context', name: 'Context API' },
   { path: '/router-examples', name: 'Router Usage Examples' },
+  { path: '/hooks', name: 'Hooks' },
+  { path: "/code-splitting", name: "Code Splitting", component: CodeSplitExample },
+  { path: "/relative", name: "Using webpack for relative path" },
+  { path: '/context', name: 'Context API' },
+  { path: '/ssr', name: 'Server side rendering' },
 ]
 
 /**
@@ -49,6 +55,7 @@ export const Main = function (props) {
           <Route path="/ref">
             <RefDemo />
           </Route>
+          <Route path="/demo" component={Demo} />
           <Route path="/hoc" component={HOCDemo} />
           <Route path="/hooks" component={HooksDemo}>
             {/* <Route path='/hooks'>
