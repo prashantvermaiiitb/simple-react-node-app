@@ -18,6 +18,7 @@ import { generateNavLinksFromConfig, generateRoutesFromConfig } from './utils/ut
 import HooksDemo from "./components/hooks/HooksDemo.js";
 import CodeSplitExample from "./components/content/CodeSplitExample.js";
 import Demo from "./components/content/FunctionalComponent.js";
+import DangerHtml from "./components/content/DangerousHtml.js";
 
 /**
  * Configuration information for the main navigation.
@@ -26,6 +27,7 @@ import Demo from "./components/content/FunctionalComponent.js";
 const mainNavigationConfig = [
   { path: '/', name: 'App', component: App },
   { path: '/demo', name: 'Functional Component', component: Demo },
+  { path: '/danger', name: 'Danger Component', component: DangerHtml },
   { path: '/hoc', name: 'High Order Component (HOC)', component: HOCDemo },
   { path: '/ref', name: 'Ref. Usage', component: RefDemo },
   { path: '/pure-vs-impure', name: 'Pure Vs Impure Component', render: (props) => { return <PureVsImpureDemo customProps="hi" />; } },
@@ -56,6 +58,7 @@ export const Main = function (props) {
             <RefDemo />
           </Route>
           <Route path="/demo" component={Demo} />
+          <Route path="/danger" component={DangerHtml} />
           <Route path="/hoc" component={HOCDemo} />
           <Route path="/hooks" component={HooksDemo}>
             {/* <Route path='/hooks'>
