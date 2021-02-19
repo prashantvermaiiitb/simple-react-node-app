@@ -19,6 +19,8 @@ import HooksDemo from "./components/hooks/HooksDemo.js";
 import CodeSplitExample from "./components/content/CodeSplitExample.js";
 import Demo from "./components/content/FunctionalComponent.js";
 import DangerHtml from "./components/content/DangerousHtml.js";
+import WindowDimensions from "./components/content/Orientation.js";
+import NoHtmlDemo from "./components/content/NoHtml.js";
 
 /**
  * Configuration information for the main navigation.
@@ -29,6 +31,11 @@ const mainNavigationConfig = [
   { path: '/demo', name: 'Functional Component', component: Demo },
   { path: '/decorator', name: 'Decorator Component' },
   { path: '/memo', name: 'Memoize Component' },
+  { path: '/scroll-height', name: 'Scroll height restoration Component' },
+  { path: '/set-state-callback', name: 'set state callback' },
+  { path: '/prop-types', name: 'PropTypes demo Shape' },
+  { path: '/orientation', name: 'Orientation Checker', component: WindowDimensions },
+  { path: '/without-render', name: 'react without render', component: NoHtmlDemo },
   { path: '/danger', name: 'Danger Component', component: DangerHtml },
   { path: '/hoc', name: 'High Order Component (HOC)', component: HOCDemo },
   { path: '/ref', name: 'Ref. Usage', component: RefDemo },
@@ -61,6 +68,8 @@ export const Main = function (props) {
           </Route>
           <Route path="/demo" component={Demo} />
           <Route path="/danger" component={DangerHtml} />
+          <Route path="/orientation" component={WindowDimensions} />
+          <Route path="/without-render" component={NoHtmlDemo} />
           <Route path="/hoc" component={HOCDemo} />
           <Route path="/hooks" component={HooksDemo}>
             {/* <Route path='/hooks'>
