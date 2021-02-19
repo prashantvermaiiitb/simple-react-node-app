@@ -27,6 +27,8 @@ import DangerHtml from "./components/content/DangerousHtml.js";
 const mainNavigationConfig = [
   { path: '/', name: 'App', component: App },
   { path: '/demo', name: 'Functional Component', component: Demo },
+  { path: '/decorator', name: 'Decorator Component' },
+  { path: '/memo', name: 'Memoize Component' },
   { path: '/danger', name: 'Danger Component', component: DangerHtml },
   { path: '/hoc', name: 'High Order Component (HOC)', component: HOCDemo },
   { path: '/ref', name: 'Ref. Usage', component: RefDemo },
