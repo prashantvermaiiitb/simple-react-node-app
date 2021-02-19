@@ -16,8 +16,12 @@ class RefDemo extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.myFancyButtonRef = React.createRef(); //fancy button reference
+    this.calledFunction = this.calledFunction.bind(this);
   }
 
+  calledFunction(e){
+    console.log('hello function will be called as the component renders');
+  }
   handleClick(e) {
     this.refList.forEach((value) => {
       if (value.current.getAttribute("class") === "active") {
@@ -86,6 +90,10 @@ class RefDemo extends Component {
         <br />
         {/* {Difference from approach 2 because we are forwarding the ref not attaching to component.?} */}
         {<RefFancyButton label="Click Me" ref={this.myFancyButtonRef} />}
+        <br/>
+        <br/>
+        <br/>
+        <div><button onClick={this.calledFunction()}>Function called (check console)</button></div>
       </>
     );
   }
