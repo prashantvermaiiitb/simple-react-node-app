@@ -21,6 +21,7 @@ import Demo from "./components/content/FunctionalComponent.js";
 import DangerHtml from "./components/content/DangerousHtml.js";
 import WindowDimensions from "./components/content/Orientation.js";
 import NoHtmlDemo from "./components/content/NoHtml.js";
+import ContextDemo from "./components/context/index.js";
 
 /**
  * Configuration information for the main navigation.
@@ -29,11 +30,7 @@ import NoHtmlDemo from "./components/content/NoHtml.js";
 const mainNavigationConfig = [
   { path: '/', name: 'App', component: App },
   { path: '/demo', name: 'Functional Component', component: Demo },
-  { path: '/decorator', name: 'Decorator Component' },
-  { path: '/memo', name: 'Memoize Component' },
-  { path: '/scroll-height', name: 'Scroll height restoration Component' },
-  { path: '/set-state-callback', name: 'set state callback' },
-  { path: '/prop-types', name: 'PropTypes demo Shape' },
+  { path: '/context', name: 'Context API', component: ContextDemo },
   { path: '/orientation', name: 'Orientation Checker', component: WindowDimensions },
   { path: '/without-render', name: 'react without render', component: NoHtmlDemo },
   { path: '/danger', name: 'Danger Component', component: DangerHtml },
@@ -44,8 +41,12 @@ const mainNavigationConfig = [
   { path: '/hooks', name: 'Hooks' },
   { path: "/code-splitting", name: "Code Splitting", component: CodeSplitExample },
   { path: "/relative", name: "Using webpack for relative path" },
-  { path: '/context', name: 'Context API' },
   { path: '/ssr', name: 'Server side rendering' },
+  { path: '/decorator', name: 'Decorator Component' },
+  { path: '/memo', name: 'Memoize Component' },
+  { path: '/scroll-height', name: 'Scroll height restoration Component' },
+  { path: '/set-state-callback', name: 'set state callback' },
+  { path: '/prop-types', name: 'PropTypes demo Shape' },
 ]
 
 /**
@@ -67,6 +68,7 @@ export const Main = function (props) {
             <RefDemo />
           </Route>
           <Route path="/demo" component={Demo} />
+          <Route path="/context" component={ContextDemo} />
           <Route path="/danger" component={DangerHtml} />
           <Route path="/orientation" component={WindowDimensions} />
           <Route path="/without-render" component={NoHtmlDemo} />
