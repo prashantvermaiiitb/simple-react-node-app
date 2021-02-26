@@ -5,7 +5,7 @@ import Movie from './Movie';
  * Movie List Component.
  * @param {*} param0 
  */
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, onMovieUpdate }) => {
     return (
         <>
             {movies.map(movie => <Movie key={movie.id} data={movie} />)}

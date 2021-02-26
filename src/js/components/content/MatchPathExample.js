@@ -4,7 +4,7 @@
  * the parent level so need those for the Demo purpose.
  */
 import React from 'react';
-import { Route, matchPath, useRouteMatch } from 'react-router-dom'
+import { Route, matchPath, useRouteMatch } from 'react-router-dom';
 
 
 const MatchPathExample = () => {

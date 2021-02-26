@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import MovieList from '../common/MovieList';
 import MovieNavBar from '../common/MovieNavBar';
+import MovieAdd from '../common/MovieAdd';
 
-const movies = [
+const movieList = [
     {
         id: 1,
         name: 'Avatar',
@@ -25,10 +26,33 @@ const movies = [
  * See how the props are getting passed.
  */
 const MovieApp = () => {
+    const [movies, setMovies] = useState(movieList);
+    const movieName = useRef(null);
+    const movieGenre = useRef(null);
+
+    /**
+     * Updating the movie update
+     * @param {*} movie 
+     */
+    const handleMovieUpdate = (movie) => {
+        setMovies([...movies, movie])
+    }
+
+    /**
+     * Addition of the new movies.
+     * @param {*} e 
+     */
+    const handleMovieAddition = (e) => {
+        const name = movieName.current.value;
+        const genre = movieGenre.current.value;
+        const id = movies.length + 1;
+        setMovies([...movies, { name, genre, id }]);
+    }
     return (
         <>
             <MovieNavBar count={movies.length} />
-            <MovieList movies={movies} />
+            <MovieAdd onMovieAddition={handleMovieAddition} ref={{ movieName, movieGenre }} />
+            <MovieList movies={movies} onMovieUpdate={handleMovieUpdate} />
         </>
     );
 }
