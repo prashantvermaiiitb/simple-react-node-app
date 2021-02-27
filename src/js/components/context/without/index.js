@@ -2,31 +2,14 @@ import React, { useState, useRef } from 'react';
 import MovieList from '../common/MovieList';
 import MovieNavBar from '../common/MovieNavBar';
 import MovieAdd from '../common/MovieAdd';
-
-const movieList = [
-    {
-        id: 1,
-        name: 'Avatar',
-        genre: 'Action',
-    },
-    {
-        id: 2,
-        name: 'good will hunting',
-        genre: 'Romance',
-    },
-    {
-        id: 3,
-        name: 'transporter',
-        genre: 'thriller',
-    }
-];
+import { MOVIE_DATA } from '../common/constants';
 
 /**
  * Movie APP which is not using context
  * See how the props are getting passed.
  */
 const MovieApp = () => {
-    const [movies, setMovies] = useState(movieList);
+    const [movies, setMovies] = useState(MOVIE_DATA);
     const movieName = useRef(null);
     const movieGenre = useRef(null);
 
