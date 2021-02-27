@@ -10,6 +10,11 @@ import MovieAdd from '../common/MovieAdd';
  * page in this and in all the child components,
  */
 const PlaceholderComponent = () => {
+    /**
+     * Important to note we are not maintaining any state,
+     * This has been moved to separate class for the context.
+     * way to access the maintained state in useContext().
+     */
     const [movies, setMovieList] = useContext(MovieContext);
     const movieName = useRef(null);
     const movieGenre = useRef(null);

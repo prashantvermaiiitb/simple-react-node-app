@@ -16,7 +16,6 @@ export const MovieContext = createContext();
  * 4) 'value' is the name of the attribute that should be used. 
  * 5) useContext() to be used where we need the context to be used. 
  * 6) Provider to be used as the Wrapper parent component overall.
- * 7) 
  */
 const MovieProvider = (props) => {
     const [movieList, setMovieList] = useState(MOVIE_DATA);
