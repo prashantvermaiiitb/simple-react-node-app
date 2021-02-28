@@ -13,13 +13,14 @@ class TodoList extends Component {
      * ! check the usage of the Context here how we are 
      * ! using that.
      */
-    static todoList = TodoListContext;
+    static contextType = TodoListContext;
     render() {
+        console.log(this.context);
         return (
             <>
                 <h2>Class component accessing the context</h2>
                 <ul>
-                    {todoList.map((value, index) => <li key={index}>{value}</li>)}
+                    {this.context[0].map((value, index) => <li key={index}>{value}</li>)}
                 </ul>
             </>
         );
