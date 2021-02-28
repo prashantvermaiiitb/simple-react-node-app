@@ -7,6 +7,7 @@ import PersonInfoContainer from "../content/PersonInfoContainer";
 import Content from "../content/Content";
 import PersonLoader from "../content/PersonLoader";
 import ErrorBoundary from "../content/ErrorBoundary";
+import ContactListApp from '../content/ContactListApp';
 
 /**
  * class for showing the sample possible implementations for the
@@ -110,6 +111,8 @@ const HOCDemo = () => {
   return (
     <>
       <h1 style={h1Style}>HOC DEMO START</h1>
+      <hr />
+      <ContactListApp />
       <hr />
       <WrappedContent data-msg="hi" />
       {test}
