@@ -22,6 +22,8 @@ import DangerHtml from "./components/content/DangerousHtml.js";
 import WindowDimensions from "./components/content/Orientation.js";
 import NoHtmlDemo from "./components/content/NoHtml.js";
 import ContextDemo from "./components/context/index.js";
+import MemoDemo from "./components/memo/index.js";
+import LazyLoadDemo from "./components/lazy/index.js";
 
 /**
  * Configuration information for the main navigation.
@@ -29,6 +31,8 @@ import ContextDemo from "./components/context/index.js";
  */
 const mainNavigationConfig = [
   { path: '/', name: 'App', component: App },
+  { path: '/memo-demo', name: 'Memo Demo', component: MemoDemo },
+  { path: '/lazy-demo', name: 'LazyLoad Demo', component: LazyLoadDemo },
   { path: '/demo', name: 'Functional Component', component: Demo },
   { path: '/context', name: 'Context API', component: ContextDemo },
   { path: '/orientation', name: 'Orientation Checker', component: WindowDimensions },
@@ -67,6 +71,8 @@ export const Main = function (props) {
           <Route path="/ref">
             <RefDemo />
           </Route>
+          <Route path="/memo-demo" component={MemoDemo} />
+          <Route path="/lazy-demo" component={LazyLoadDemo} />
           <Route path="/demo" component={Demo} />
           <Route path="/context" component={ContextDemo} />
           <Route path="/danger" component={DangerHtml} />
