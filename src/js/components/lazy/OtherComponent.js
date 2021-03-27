@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import WithBorder from '../higher-order-components/WithBorder';
 
 const Todo = ({ title, completed }) => {
     return (<li>{title}</li>);
@@ -12,9 +13,11 @@ const OtherComponent = () => {
     const [message, setMessage] = useState(null);
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/todos/')
+        setTimeout(function(){
+            fetch('https://jsonplaceholder.typicode.com/todos/')
             .then(response => response.json())
             .then(json => { console.log(json); setMessage(json); })
+        },3000);
     }, []);
 
     return (
@@ -31,4 +34,4 @@ const OtherComponent = () => {
     );
 }
 
-export default OtherComponent;
+export default WithBorder(OtherComponent);
