@@ -33,6 +33,7 @@ import ContextDemo from "./components/context/index.js";
 import MemoDemo from "./components/memo/index.js";
 import LazyLoadDemo from "./components/lazy/index.js";
 import Person from "./components/decorator/Person";
+import { GetSetDemo } from "./components/getset/get-set-demo.jsx";
 
 /**
  * Configuration information for the main navigation.
@@ -40,6 +41,7 @@ import Person from "./components/decorator/Person";
  */
 const mainNavigationConfig = [
   { path: "/", name: "App", component: App },
+  { path: "/get-set-demo", name: "Get-set Demo", component: GetSetDemo },
   { path: "/deco-demo", name: "Decorator Demo", component: Person },
   { path: "/memo-demo", name: "Memo Demo", component: MemoDemo },
   { path: "/lazy-demo", name: "LazyLoad Demo", component: LazyLoadDemo },
@@ -99,6 +101,7 @@ export const Main = function (props) {
           <Route path="/ref">
             <RefDemo />
           </Route>
+          <Route path="/get-set-demo" component={GetSetDemo} />
           <Route path="/deco-demo" component={Person} />
           <Route path="/memo-demo" component={MemoDemo} />
           <Route path="/lazy-demo" component={LazyLoadDemo} />
