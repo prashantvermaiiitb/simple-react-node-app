@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { DecoHuman } from "./Human";
 
 /**
  * ? Even if this function returns nothing this will be rendering the old component
@@ -44,6 +45,11 @@ function enable(WrappedComponent, key, descriptor) {
 @enable
 export default class Person extends Component {
   render() {
-    return <span>Sample example for the Decorator.</span>;
+    return (
+      <>
+        <span>Sample example for the Decorator.</span>
+        <DecoHuman />
+      </>
+    );
   }
 }

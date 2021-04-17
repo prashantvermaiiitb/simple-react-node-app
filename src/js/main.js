@@ -33,7 +33,7 @@ import ContextDemo from "./components/context/index.js";
 import MemoDemo from "./components/memo/index.js";
 import LazyLoadDemo from "./components/lazy/index.js";
 import Person from "./components/decorator/Person";
-import { GetSetDemo } from "./components/getset/get-set-demo.jsx";
+import { GetSetDemo } from "./components/js-concept/get-set-demo.jsx";
 
 /**
  * Configuration information for the main navigation.
