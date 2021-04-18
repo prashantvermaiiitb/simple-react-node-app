@@ -3,6 +3,11 @@
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     ["@babel/plugin-syntax-dynamic-import"],
-    ["@babel/plugin-proposal-class-properties"] // this is being used for allowing static declaration in the class directly.
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ] // this is being used for allowing static declaration in the class directly and class properties.
   ]
 }
