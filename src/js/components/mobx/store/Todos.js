@@ -84,7 +84,8 @@ class TodoStore {
     get report() {
         if (this.todos.length === 0) return 'There are no todos.';
         const nextTodo = this.todos.find(todo => !todo.completed);
-        return `Next Todo to be done : ${nextTodo ? nextTodo.name : '<none>'}, with Overall Progress: ${this.completedTodos}/${this.todos.length}`
+        console.log(nextTodo);
+        return `Next Todo to be done : ${nextTodo ? `${nextTodo.name} ${nextTodo.assignee && `assigned to ${nextTodo.assignee.name}`}` : '<none>'}, with Overall Progress: ${this.completedTodos}/${this.todos.length}`
     }
 
     /**
