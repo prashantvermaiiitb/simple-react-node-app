@@ -2,9 +2,9 @@ import { action, autorun, computed, makeObservable, observable } from "mobx";
 
 class Todo {
     // id;
-    // @observable name;// TS will ensure that it's null or string
-    // @observable completed; // TS will ensure that it's boolean
-    // @observable assignee;// TS will ensure that it's null or string
+    @observable name;// TS will ensure that it's null or string
+    @observable completed; // TS will ensure that it's boolean
+    @observable assignee;// TS will ensure that it's null or string
     /**
      * Constructor function
      * @param {*} id 
@@ -17,7 +17,32 @@ class Todo {
         this.name = name;
         this.completed = completed || false;
         this.assignee = assignee || null;
-        // makeObservable(this);
+        makeObservable(this);
+    }
+
+    /**
+     * Updating the name of the todo
+     * @param {*} name 
+     */
+    @action
+    updateTodoNameAction(name) {
+        this.name = name;
+    }
+    /**
+     * Upating the status of the todo just toggling that
+     */
+    @action
+    updateTodoStatusAction() {
+        this.completed = !this.completed;
+    }
+    /**
+    * Assigning todos to the particular Person object
+    * @param {*} person 
+    * @returns 
+    */
+    @action
+    assignTodoAction(person) {
+        this.assignee = person; // assign the reference of the person object in the Todo Object
     }
 }
 
@@ -35,25 +60,16 @@ class TodoStore {
      * @param {*} param0 : todo value 
      */
     addToDoAction({ name, completed = false, assignee = null }) {
-        let todo = { id: this.currentIndex++, name, completed, assignee };
+        //Approach#1
+        // let todo = { id: this.currentIndex++, name, completed, assignee };
+        // this.todos.push(todo);
+        // return todo;
+
+        let todo = new Todo({ id: this.currentIndex++, name, completed, assignee });
         this.todos.push(todo);
         return todo;
-        // this.todos.push(new Todo({ id: this.currentIndex++, name, completed, assignee }));
     }
-    /**
-        * Assigning todos to the particular Person object
-        * @param {*} todoIndex 
-        * @param {*} person 
-        * @returns 
-        */
-    @action
-    assignTodoAction(todoIndex, person) {
-        let todo = this.todos.filter(todo => todo.id === todoIndex).shift();
-        if (todo === null) {
-            return false;
-        }
-        todo.assignee = person; // assign the reference of the person object in the Todo Object
-    }
+
     /**
      * making the completed Todos as the property so that can be used for 
      * generating the progress of the Tasks.

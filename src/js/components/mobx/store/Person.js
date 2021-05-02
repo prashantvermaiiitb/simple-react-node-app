@@ -15,3 +15,8 @@ export const PersonStore = observable([
     { id: 3, name: 'jacky', age: 30, gender: 'male', icon: '', efficiency: 5 },
     { id: 4, name: 'marie', age: 20, gender: 'female', icon: '', efficiency: 5 },
 ]);
+
+typeof window !== 'undefined' && (window.personStore = PersonStore);
+/**
+ * You can check the new person addition here in the person store as well
+ */

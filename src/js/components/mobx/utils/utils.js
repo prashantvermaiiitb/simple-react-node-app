@@ -7,18 +7,30 @@
 export function getPersonIndex(todoIndex, personStore) {
     let maxPersonIndex = personStore.length - 1; // because in array index is less than or equal to length
     /**
-       * get the index of todo
-       * get the count of the persons
-       * todoIndex < personIndex assgin that
-       * todoIndex % personIndex assing that to the remainder
-       */
+     * get the index of todo
+     * get the count of the persons
+     * todoIndex < personIndex assgin that
+     * todoIndex % personIndex assing that to the remainder
+     */
     return todoIndex <= maxPersonIndex ? todoIndex : (todoIndex % maxPersonIndex);
 }
+/**
+ * Assign todo to a person object 
+ * @param {*} todo 
+ * @param {*} person 
+ */
+export function assignTodoToPerson(todo, person) {
+    todo.assignTodoAction(person);
+}
 
-export function assignTodo(todo, todoStore, personStore) {
-    //! this is incorrect implementation because this should be controlled at the Todo level
+/**
+ * Assign Todo moved inside the Todo object
+ * @param {*} todo 
+ * @param {*} personStore 
+ */
+export function assignTodo(todo, personStore) {
     let personIndex = getPersonIndex(todo.id, personStore);
-    todoStore.assignTodoAction(todo.id, personStore[personIndex]);
+    assignTodoToPerson(todo, personStore[personIndex]);
 }
 
 /**
@@ -26,11 +38,7 @@ export function assignTodo(todo, todoStore, personStore) {
  * @param {*} todoStore 
  */
 export function assignTodos(todoStore, personStore) {
-
-    // todoStore.assignTodoAction(personStore)
     todoStore.todos.forEach(todo => {
-        // let personIndex = getPersonIndex(todo.id, personStore);
-        // todoStore.assignTodoAction(todo.id, personStore[personIndex]);
-        assignTodo(todo, todoStore, personStore);
+        assignTodo(todo, personStore);
     });
 }

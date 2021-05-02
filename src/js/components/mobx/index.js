@@ -15,7 +15,7 @@ import TodoList from './reactions/TodoList';
 const MobxToDoApp = () => {
     let store = initiateStores();
 
-    console.log("🚀 ~ file: index.js ~ line 15 ~ MobxToDoApp ~ stores", store)
+    // console.log("🚀 ~ file: index.js ~ line 15 ~ MobxToDoApp ~ stores", store)
 
     return (
         <>

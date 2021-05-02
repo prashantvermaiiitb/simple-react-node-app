@@ -20,9 +20,19 @@ function addSampleTodos(todoStore) {
 
     fetch('https://jsonplaceholder.typicode.com/todos')
         .then(response => response.json())
-        .then(json => json.forEach(todoJson => {
-            todoStore.addToDoAction({ name: todoJson.title, completed: todoJson.completed });
-        }))
+        .then(response => {
+            todoStore.addToDoAction({ name: 'buy milk' });
+            todoStore.addToDoAction({ name: 'buy eggs', completed: true });
+            todoStore.addToDoAction({ name: 'buy bread' });
+            todoStore.addToDoAction({ name: 'get ration' });
+            todoStore.addToDoAction({ name: 'eat choclate' });
+            Utils.assignTodos(todoStore, personStore);
+        })
+    // .then(json => json.slice(json.length / 2)) //cutting short the list of the todos 
+    // .then(json => json.forEach(todoJson => {
+    //     todoStore.addToDoAction({ name: todoJson.title, completed: todoJson.completed });
+    //     Utils.assignTodos(todoStore, personStore);
+    // }))
 
 }
 
@@ -34,6 +44,5 @@ function addSampleTodos(todoStore) {
 export function initiateStores() {
     let todoStore = new TodoStore();
     addSampleTodos(todoStore);
-    Utils.assignTodos(todoStore, personStore);
     return { todoStore, personStore };
 }
