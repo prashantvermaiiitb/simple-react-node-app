@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/prashantvermaiiitb/simple-react-node-app#readme",
   "dependencies": {
+    "mobx": "^6.3.0",
+    "mobx-react": "^7.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "webpack": "^4.44.1",
